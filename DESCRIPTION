@@ -1,6 +1,6 @@
 Package: metRology
-Version: 0.9-14
-Date: 2012-07-26
+Version: 0.9-16
+Date: 2013-03-14
 Title: Support for metrological applications
 Author: Stephen L R Ellison <s.ellison@lgc.co.uk>.
 Maintainer: Stephen L R Ellison <s.ellison@lgc.co.uk>
@@ -14,6 +14,8 @@ License: GPL (>= 2)
 URL: http://metrology.sourceforge.net
 Repository: CRAN
 Repository/R-Forge/Project: metrology
-Repository/R-Forge/Revision: 29
-Packaged: 2012-07-26 02:19:49 UTC; rforge
-Date/Publication: 2012-07-29 10:38:26
+Repository/R-Forge/Revision: 34
+Repository/R-Forge/DateTimeStamp: 2013-03-14 23:49:54
+Date/Publication: 2013-03-15 14:54:32
+Packaged: 2013-03-15 03:15:28 UTC; rforge
+NeedsCompilation: no
