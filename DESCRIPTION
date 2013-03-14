@@ -1,5 +1,5 @@
 Package: metRology
-Version: 0.9-16
+Version: 0.9-16.1
 Date: 2013-03-14
 Title: Support for metrological applications
 Author: Stephen L R Ellison <s.ellison@lgc.co.uk>.
@@ -16,6 +16,6 @@ Repository: CRAN
 Repository/R-Forge/Project: metrology
 Repository/R-Forge/Revision: 34
 Repository/R-Forge/DateTimeStamp: 2013-03-14 23:49:54
-Date/Publication: 2013-03-15 14:54:32
-Packaged: 2013-03-15 03:15:28 UTC; rforge
+Date/Publication: 2014-01-03 08:15:54
+Packaged: 2014-01-03 07:15:21 UTC; ripley
 NeedsCompilation: no

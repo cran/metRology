@@ -16,8 +16,10 @@ intervals produced using the \code{\link{GUM}} function.
 }
 
 \usage{
-GUM.validate(var.name, x.i, u.i, nu.i, type, distribution, measurement.fnc, correlation = diag(length(var.name)),
-shared.u.i = var.name, cl = 0.95, cov.factor = "Student's t", sig.digits.U = 2)
+GUM.validate(var.name, x.i, u.i, nu.i, type, distribution, measurement.fnc,
+              correlation = diag(length(var.name)),
+              shared.u.i = var.name, cl = 0.95,
+              cov.factor = "Student's t", sig.digits.U = 2)
 }
 
 \arguments{
@@ -72,7 +74,8 @@ Hung-kung Liu \email{hung-kung.liu@nist.gov} and Will Guthrie \email{will.guthri
 
 \examples{
 ## a simple uncertainty analysis for the product of two quantities
-GUM.validate(c("x1","x2"),c(2.3,1.1),c(0.030,0.015),c(5,9999),c("A","B"),c("Normal","Rectangular"),"x1*x2")
+GUM.validate(c("x1","x2"),c(2.3,1.1),c(0.030,0.015),c(5,9999),c("A","B"),
+             c("Normal","Rectangular"),"x1*x2")
 }
 
 \keyword{univar}

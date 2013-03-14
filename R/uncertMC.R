@@ -147,7 +147,6 @@ uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars,
                         stop("Correlation is only supported for normal distributions.", call.=TRUE)
                 
                 #use mvrnorm from MASS to handle correlations
-                require(MASS)
                 dfx<-as.data.frame( mvrnorm(n=B, mu=unlist(x[cor.vars]), Sigma=cov[cor.vars,cor.vars]) )
                 names(dfx)<-cor.vars.names
                 

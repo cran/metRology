@@ -1,3 +1,4 @@
 exportPattern("^[^\\.]")
 importFrom(graphics, image)
+import(MASS, numDeriv)
 

@@ -106,7 +106,7 @@ plot.uncertMC<-function(x, which=1:2, main=paste("Monte Carlo evaluation -",depa
                 if(2 %in% which) {
                         qqpars<-arglist[names(arglist) %in% names(c(formals(qqnorm),par()))]
                         if(is.null(qqpars$datax)) qqpars$datax = TRUE
-                        do.call(qqnorm.default, c(list(y=x$MC$y,  main=""), qqpars))
+                        do.call(qqnorm, c(list(y=unclass(x$MC$y),  main=""), qqpars))
                         
                         qqlpars<-arglist[names(arglist) %in% names(c(formals(qqline),par()))]
                         if(is.null(qqlpars$datax)) qqlpars$datax = TRUE
@@ -124,7 +124,7 @@ plot.uncertMC<-function(x, which=1:2, main=paste("Monte Carlo evaluation -",depa
                         d<-do.call(density.default, dpars)
                         
                         dppars<-arglist[names(arglist) %in% names(c(formals(plot.default), par()))]
-                        do.call(plot.density, c(list(x=d, main=""), dppars))
+                        do.call(plot, c(list(x=d, main=""), dppars))
                         if(lwd.y >= 1) abline(v=x$y, col=col.y, lwd=lwd.y, lty=lty.y)
                         mtext(caption[[3]], side = 3, line=0.25, cex=cex.caption)
                         if(one.fig) title(main=main)

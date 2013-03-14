@@ -39,7 +39,6 @@ GUM.validate <- function (var.name, x.i, u.i, nu.i, type, distribution, measurem
     if (sum(subset) != 0) {
         corrltn <- correlation[subset, subset]
         tsd <- matrix(u.i[subset], nrow = 1)
-        library(MASS)
         obs.xi[, subset] <- mvrnorm(nreps, x.i[subset], t(tsd) %*% 
             tsd * corrltn)
         subsetG <- subset

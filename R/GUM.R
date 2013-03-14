@@ -67,10 +67,10 @@ GUM <- function (var.name, x.i, u.i, nu.i, measurement.fnc, correlation = diag(l
     cmat = try(attr(eval(deriv(meq, var.name)), "gradient"), 
         silent = TRUE)
     if (inherits(cmat, "try-error")) {
-        if (!require(numDeriv, quietly = TRUE)) {
-            cat("ERROR: R package numDeriv is not available\n")
-            return(rep(NA, 2))
-        }
+##        if (!require(numDeriv, quietly = TRUE)) {
+##            cat("ERROR: R package numDeriv is not available\n")
+##            return(rep(NA, 2))
+##        }
         cmat <- NULL
         for (i in 1:nrow(x.i)) {
             x <- x.i[i, ]
