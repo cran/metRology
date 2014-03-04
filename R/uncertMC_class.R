@@ -1,4 +1,13 @@
 #uncertMC object
+#
+#Author: S Ellison
+#
+#Changes:
+# 2013-10-24: Amended references to qqplot.default and hist.default to generic; also 
+#             amended refs in formals(x.default) to use formals(getS3method("x", "default"))
+#
+# 2014-03-04: Amended reference to plot.density to plot
+#
 print.uncertMC<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE, minimise=FALSE){
         maxwidth<-12L
         cat("\nUncertainty evaluation\n\n")
@@ -96,17 +105,17 @@ plot.uncertMC<-function(x, which=1:2, main=paste("Monte Carlo evaluation -",depa
                 at<-NULL
                 x.names<-row.names(x$budget)
                 if(1 %in% which) {
-                        histpars<-arglist[names(arglist) %in% names(c(formals(hist.default),par()))]
-                        do.call(hist.default, c(list(x=x$MC$y, main="", xlab=xlab), histpars))
+                        histpars<-arglist[names(arglist) %in% names(c(formals(getS3method("hist", "default")),par()))]
+                        do.call(hist, c(list(x=x$MC$y, main="", xlab=xlab), histpars))
                         if(lwd.y >= 1) abline(v=x$y, col=col.y, lwd=lwd.y, lty=lty.y)
                         mtext(caption[[1]], side = 3, line=0.25, cex=cex.caption)
                         if(one.fig) title(main=main)
                 }
 
                 if(2 %in% which) {
-                        qqpars<-arglist[names(arglist) %in% names(c(formals(qqnorm),par()))]
+                        qqpars<-arglist[names(arglist) %in% names(c(formals(getS3method("qqnorm", "default")),par()))]
                         if(is.null(qqpars$datax)) qqpars$datax = TRUE
-                        do.call(qqnorm, c(list(y=unclass(x$MC$y),  main=""), qqpars))
+                        do.call(qqnorm, c(list(y=x$MC$y,  main=""), qqpars))
                         
                         qqlpars<-arglist[names(arglist) %in% names(c(formals(qqline),par()))]
                         if(is.null(qqlpars$datax)) qqlpars$datax = TRUE
@@ -119,11 +128,15 @@ plot.uncertMC<-function(x, which=1:2, main=paste("Monte Carlo evaluation -",depa
                 }
                 
                 if(3 %in% which) {
-                        dpars<-arglist[names(arglist) %in% names(formals(density.default))]
+                        dpars<-arglist[names(arglist) %in% names(formals(getS3method("density", "default")))]
                         dpars$x<-x$MC$y
-                        d<-do.call(density.default, dpars)
+                        d<-do.call(density, dpars)
                         
-                        dppars<-arglist[names(arglist) %in% names(c(formals(plot.default), par()))]
+                        dppars<-arglist[names(arglist) %in% 
+                                unique(names(c(formals(getS3method("plot", "default")), 
+                                        formals(getS3method("plot", "density")), par())))]
+                        #do.call(plot.density, c(list(x=d, main=""), dppars))
+                        	#Explicit call removed - SLRE
                         do.call(plot, c(list(x=d, main=""), dppars))
                         if(lwd.y >= 1) abline(v=x$y, col=col.y, lwd=lwd.y, lty=lty.y)
                         mtext(caption[[3]], side = 3, line=0.25, cex=cex.caption)
@@ -158,7 +171,7 @@ plot.uncertMC<-function(x, which=1:2, main=paste("Monte Carlo evaluation -",depa
                         if( !is.null(xycor) ) {
                                 names.arg<-if(is.null(names(xycor))) x.names else names(xycor)
 
-                                barpars<-arglist[names(arglist) %in% names(c(formals(barplot.default), par()))]
+                                barpars<-arglist[names(arglist) %in% names(c(formals(getS3method("barplot", "default")), par()))]
                                 at<-do.call(barplot, c(list(height=as.vector(xycor), names.arg=names.arg), barpars))
                                 corMethod<-paste(toupper(substring(corpars$method, 1,1)), 
                                         substring(corpars$method, 2), sep="", collapse=" ")
@@ -201,7 +214,8 @@ plot.uncertMC<-function(x, which=1:2, main=paste("Monte Carlo evaluation -",depa
                         if( !is.null(xycov) ) {
                                 names.arg<-if(is.null(names(xycov))) x.names else names(xycov)
 
-                                barpars<-arglist[names(arglist) %in% names(c(formals(barplot.default), par()))]
+                                barpars<-arglist[names(arglist) %in% 
+                                        names(c(formals(getS3method("barplot", "default")), par()))]
                                 at<-do.call(barplot, c(list(height=as.vector(xycov), names.arg=names.arg), barpars))
                                 covMethod<-paste(toupper(substring(covpars$method, 1,1)), 
                                         substring(covpars$method, 2), sep="", collapse=" ")

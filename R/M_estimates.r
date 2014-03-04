@@ -1,3 +1,9 @@
+#
+#Changes:
+#
+# 2014-03-04: Removed 'require(MASS)' (not needed when listing in 'depends')
+#
+
 MM.estimate<-function(x, ...) {
         UseMethod("MM.estimate")
 }

@@ -29,18 +29,19 @@ shared.u.i = var.name, cl = 0.95, cov.factor = "Student's t", sig.digits.U = 2, 
   \item{nu.i}{Degrees of freedom associated with each standard uncertainty.}
   \item{measurement.fnc}{Character string specifying the functional relationship between
                          input variables that defines the output measurement result.}
-  \item{correlation}{Matrix giving the correlation between the different input variable values. Default is to assume
-                     no correlation between input variable values.}
+  \item{correlation}{Matrix giving the correlation between the different input variable values. 
+                     Default is to assume no correlation between input variable values.}
   \item{shared.u.i}{Character vector giving the relative relationship between the standard uncertainties
                     for each variable value. Groups of variables based on a common shared standard uncertainty
-                    share will all share the same variable name. The default is to assume all standard uncertainties
+                    will all share the same variable name. The default is to assume all standard uncertainties
                     are assessed independently, resulting a value of shared.u.i that is identical to var.name.}
   \item{cl}{Nominal confidence level to be used to compute the expanded uncertainty of the output measurement result.
              Default value is 0.95.}
   \item{cov.factor}{Type of coverage factor to be used. The default is to use the value from the Student's t 
                     distribution with confidence level specified above and nu.eff effective degrees of freedom.}
-  \item{sig.digits.U}{Number of significant digits to be reported in the expanded uncertainty of the measurement result.
-                      The measurement result will be rounded to the same number of decimal places.}
+  \item{sig.digits.U}{Number of significant digits to be reported in the expanded uncertainty of 
+                      the measurement result. The measurement result will be rounded to the same
+                      number of decimal places.}
   \item{\dots}{ Arguments passed to other functions. Currently unimplemented.}
 }
 
@@ -87,12 +88,10 @@ and numerical options in uncertainty analysis.
 ## a simple uncertainty analysis for the product of two quantities
 GUM(c("x1","x2"),c(2.3,1.1),c(0.030,0.015),c(5,9999),"x1*x2")
 
-## example of the difference in the measurements of two standards,
-## each with a standard uncertainty
-## based on a common value drawn from a control chart representative
-## of the measurement process made 
-## using a check standard that is comparable to the two individual standards
-## under study
+## example of the difference in the measurements of two standards, each 
+## with a standard uncertainty based on a common value drawn from a control chart
+## representative of the measurement process made using a check standard that 
+## is comparable to the two individual standards under study
 GUM(c("s1","s2"),c(45.3,46.0),c(0.26,0.26),c(134,134),"s1-s2",shared.u.i=c("s1","s1"))
 
 ## compare with results for equivalent, alternative specification of shared.u.i

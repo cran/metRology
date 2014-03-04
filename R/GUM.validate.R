@@ -1,3 +1,7 @@
+#Changes:
+#
+# 2014-03-04  Removed "library(MASS)" (deprecated) - SLRE
+#
 GUM.validate <- function (var.name, x.i, u.i, nu.i, type, distribution, measurement.fnc, 
     correlation = diag(length(var.name)), shared.u.i = var.name, 
     cl = 0.95, cov.factor = "Student's t", sig.digits.U = 2) 
@@ -39,6 +43,7 @@ GUM.validate <- function (var.name, x.i, u.i, nu.i, type, distribution, measurem
     if (sum(subset) != 0) {
         corrltn <- correlation[subset, subset]
         tsd <- matrix(u.i[subset], nrow = 1)
+        #library(MASS)  #Removed - library() is deprecated when using imports or depends
         obs.xi[, subset] <- mvrnorm(nreps, x.i[subset], t(tsd) %*% 
             tsd * corrltn)
         subsetG <- subset

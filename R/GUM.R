@@ -1,3 +1,9 @@
+#
+# Changes:
+#
+# 2014-03-04 (S Ellison) Removed explicit require and associated check:
+#            require() is now deprected in code when the packages is
+#            listed in Depends or Imports
 GUM <- function (var.name, x.i, u.i, nu.i, measurement.fnc, correlation = diag(length(var.name)), 
     shared.u.i = var.name, cl = 0.95, cov.factor = "Student's t", 
     sig.digits.U = 2, ...) 
@@ -67,10 +73,11 @@ GUM <- function (var.name, x.i, u.i, nu.i, measurement.fnc, correlation = diag(l
     cmat = try(attr(eval(deriv(meq, var.name)), "gradient"), 
         silent = TRUE)
     if (inherits(cmat, "try-error")) {
-##        if (!require(numDeriv, quietly = TRUE)) {
-##            cat("ERROR: R package numDeriv is not available\n")
-##            return(rep(NA, 2))
-##        }
+        #require() in code with listed Depends/Imports is deprecated - SLRE
+        #if (!require(numDeriv, quietly = TRUE)) {
+        #    cat("ERROR: R package numDeriv is not available\n")
+        #    return(rep(NA, 2))
+        #}
         cmat <- NULL
         for (i in 1:nrow(x.i)) {
             x <- x.i[i, ]

@@ -19,6 +19,11 @@
 #	(no evidence of random effect)
 #===============================================
 
+#Changes:
+#
+# 2014-03-04  Removed "require(MASS)" (deprecated) - SLRE
+#
+
 #
 # Suggestion [SLRE]
 # i) Add construct.loc.estimate and return location estimate
@@ -31,7 +36,6 @@ mle.1wre<- function(x, s2, n, init.mu=mean(x), init.sigma2=var(x), labels=c(1:le
 #
 # x=reported sample means, s2=reported sample variances, n=reported sample sizes, labels=participant labels
 #
-
 
 	# sort the datapoints by labels
 	labels <- as.character(labels)	#Added SLRE 2010-08-01

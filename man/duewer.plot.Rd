@@ -14,16 +14,15 @@ uncertainty plotted against (relative) deviation from assigned value.
 duewer.plot(x, \dots)
 
 \method{duewer.plot}{default}(x,s,mu=median(x),sigma=mad(x), s0=median(s), labels=NA,
-		radius=1:3, units=c("z","x"), 
-		main, xlab, ylab, xlim, ylim,  
-		at.xax=NULL, at.yax=NULL, aspect, 
-		col.contours="lightgrey",
-                lty.contours=par("lty"), lwd.contours=par("lwd"),
-		label.contours=T, format.clab="p=\%4.3f",
-		cex=par("cex"), cex.label=0.7, pos=3, adj=NULL, 
-		pos.clab="bottomright", col.clab=col.contours,
-		cex.axis=par("cex.axis"), pch=par("pch"), las=par("las"), 
-		col=par("col"), bg=par("bg"), \dots)
+             radius=1:3, units=c("z","x"), 
+             main, xlab, ylab, xlim, ylim,  
+             at.xax=NULL, at.yax=NULL, aspect, 
+             col.contours="lightgrey", lty.contours=par("lty"), lwd.contours=par("lwd"),
+             label.contours=T, format.clab="p=\%4.3f",
+             cex=par("cex"), cex.label=0.7, pos=3, adj=NULL, 
+             pos.clab="bottomright", col.clab=col.contours,
+             cex.axis=par("cex.axis"), pch=par("pch"), las=par("las"), 
+             col=par("col"), bg=par("bg"), \dots)
 }
 
 \arguments{

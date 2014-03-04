@@ -10,9 +10,8 @@ Vangel-Rukhin Maximum Likelihood Estimate
      algorithm of Vangel-Rukhin.
 }
 \usage{
-mle.1wre(x, s2, n, init.mu = mean(x), init.sigma2 = var(x),
-         labels = c(1:length(x)), max.iter = 200,
-          tol = .Machine$double.eps^0.5, trace = FALSE)
+mle.1wre(x, s2, n, init.mu = mean(x), init.sigma2 = var(x), labels = c(1:length(x)), 
+         max.iter = 200, tol = .Machine$double.eps^0.5, trace = FALSE)
 }
 
 \arguments{

@@ -8,18 +8,18 @@ Using Attained Coverage Probability
 }
 
 \description{
-A function for assessing the statistical performance of measurement uncertainty intervals for particular metrology 
-applications computed using the methods from the Joint Committee on Guides in Metrology (JCGM)
-\emph{Guide to the Expression of Uncertainty in Measurement (GUM)}. The validation is carried out using the input
-values as true values in a simulation that directly checks the attained coverage probability of the uncertainty
+A function for assessing the statistical performance of measurement uncertainty intervals for 
+particular metrology applications computed using the methods from the Joint Committee on 
+Guides in Metrology (JCGM) \emph{Guide to the Expression of Uncertainty in Measurement (GUM)}. 
+The validation is carried out using the input values as true values in a simulation that 
+directly checks the attained coverage probability of the uncertainty
 intervals produced using the \code{\link{GUM}} function.
 }
 
 \usage{
-GUM.validate(var.name, x.i, u.i, nu.i, type, distribution, measurement.fnc,
-              correlation = diag(length(var.name)),
-              shared.u.i = var.name, cl = 0.95,
-              cov.factor = "Student's t", sig.digits.U = 2)
+GUM.validate(var.name, x.i, u.i, nu.i, type, distribution, measurement.fnc, 
+             correlation = diag(length(var.name)), shared.u.i = var.name, cl = 0.95, 
+             cov.factor = "Student's t", sig.digits.U = 2)
 }
 
 \arguments{
@@ -36,8 +36,8 @@ GUM.validate(var.name, x.i, u.i, nu.i, type, distribution, measurement.fnc,
                       "Triangular", or "Rectangular" (i.e. Uniform).}
   \item{measurement.fnc}{Character string specifying the functional relationship between
                          input variables that defines the output measurement result.}
-  \item{correlation}{Matrix giving the correlation between the different input variable values. Default is to assume
-                     no correlation between input variable values.}
+  \item{correlation}{Matrix giving the correlation between the different input variable values. 
+                     Default is to assume no correlation between input variable values.}
   \item{shared.u.i}{Character vector giving the relative relationship between the standard uncertainties
                     for each variable value. Groups of variables based on a common shared standard uncertainty
                     share will all share the same variable name. The default is to assume all standard uncertainties
@@ -74,8 +74,8 @@ Hung-kung Liu \email{hung-kung.liu@nist.gov} and Will Guthrie \email{will.guthri
 
 \examples{
 ## a simple uncertainty analysis for the product of two quantities
-GUM.validate(c("x1","x2"),c(2.3,1.1),c(0.030,0.015),c(5,9999),c("A","B"),
-             c("Normal","Rectangular"),"x1*x2")
+GUM.validate(c("x1","x2"), c(2.3,1.1), c(0.030,0.015), c(5,9999),
+               c("A","B"),c("Normal","Rectangular"),"x1*x2")
 }
 
 \keyword{univar}

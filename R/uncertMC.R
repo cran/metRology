@@ -1,5 +1,11 @@
 #Functions for Monte Carlo 
-
+#
+#Author: S Ellison
+#
+#Changes:
+#
+# 2014-03-04  Removed "require(MASS)" (deprecated) - SLRE
+#
 uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars, B=200, keep.x=TRUE,  vectorized=TRUE, ...) {
 
         if(method != "MC") {

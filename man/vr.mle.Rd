@@ -11,9 +11,8 @@ Vangel-Rukhin Maximum Likelihood Estimate
      algorithm of Vangel-Rukhin.
 }
 \usage{
-vr.mle(x, s2, n, init.mu = mean(x), init.sigma2 = var(x), 
-       labels = c(1:length(x)), max.iter = 1000,
-       tol = .Machine$double.eps^0.5, trace = FALSE)
+vr.mle(x, s2, n, init.mu = mean(x), init.sigma2 = var(x), labels = c(1:length(x)), 
+       max.iter = 1000, tol = .Machine$double.eps^0.5, trace = FALSE)
 
 \method{print}{summary.vr.mle}(x, ..., digits=3) 
 

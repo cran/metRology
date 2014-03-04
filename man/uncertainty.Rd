@@ -16,8 +16,8 @@ Correlation is supported via either a correlation or covariance matrix.}
    uncert(obj, \dots)
 
    \method{uncert}{default}(obj, c, method = c("GUM", "MC"), cor, 
-            cov, distrib=NULL, distrib.pars=NULL, B=200, x=NULL,
-            keep.x = TRUE, u=obj, \dots)
+            cov, distrib=NULL, distrib.pars=NULL, B=200, x=NULL, keep.x = TRUE, 
+            u=obj, \dots)
 
    \method{uncert}{expression}(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "MC"), 
             cor, cov, distrib=NULL, distrib.pars=NULL, 
