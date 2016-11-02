@@ -6,22 +6,37 @@ uncert<-function(obj, ...){
 uncert.default<-function(obj, c, method=c("GUM", "MC"), cor, cov, distrib=NULL, 
                 distrib.pars=NULL, B=200, x=NULL, keep.x=TRUE, u=obj, ...) {
 
+   ### Standard check for u, cov and cor.
+
         if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
+	
+	if(!missing(u) && !missing(cov)) {
+		warning("Only one of u and cov should be specified: using cov", call.=TRUE)
+	}
+
+	if(missing(u)) {
+		#cov is present; see previous checks
+		u <- as.list( sqrt(diag(cov)) )
+	}
 
         if(missing(cor)) {
                 if(missing(cov)) cor <- diag(1, length(u))
-                else cor <- cov / outer( sqrt(diag(cov)), sqrt(diag(cov)),"*" )
+                else cor <- cov2cor(cov)
         } 
+
+        if(any(abs(cor)>1)) stop("cor contains values outside [-1,1]", call.=TRUE)
         
-        if(any(abs(cor)>1)) stop("cor contains values outside (-1,1)", call.=TRUE)
-
-
-        if(missing(cov)) {
-                u <- unlist(u)
-                cov<-outer(u,u,"*")*cor
-        } else {
-                if(!missing(u)) warning("Only one of u and cov should be specified: using cov")
+        if(!is.null(names(x)) && !missing(u) ) {
+                if(!is.null(names(u)))  u <- u[names(x)]
+                        else names(u) <- names(x)
         }
+        
+        uv<-unlist(u)
+        
+        if(missing(cov)) {
+                cov<-outer(uv,uv,"*")*cor
+        } 
+     ### End standard check for u, cov and cor.
 
         method <- match.arg(method, several.ok=TRUE)[1]
 
@@ -29,7 +44,7 @@ uncert.default<-function(obj, c, method=c("GUM", "MC"), cor, cov, distrib=NULL,
                 cc <- unlist(c)
                 v <- ((t(cc) %*% cov ) %*% cc)[1,1]
                 cov.xy<-as.vector( cov %*% cc)
-                cor.xy<-cov.xy/(u*sqrt(v))
+                cor.xy<-cov.xy/(uv*sqrt(v))
                 names(cov.xy)<-names(cor.xy)<-names(x)
                 rv<-.construct.uncert(x=x, u=u, ci=cc, y=NA, u.y=sqrt(v), method=method, 
                                 call.uncert=match.call(), cor=cor, cov=cov, cov.xy=cov.xy, 
@@ -61,11 +76,22 @@ uncert.default<-function(obj, c, method=c("GUM", "MC"), cor, cov, distrib=NULL,
 uncert.function<-function(obj, x, u, method=c("NUM", "kragten", "k2", "MC"), cor, cov, 
                         distrib=NULL, distrib.pars=NULL, B=200, delta=0.01, keep.x=TRUE, ...) {
 
+    ### Standard check for u, cov and cor.
+
         if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
+	
+	if(!missing(u) && !missing(cov)) {
+		warning("Only one of u and cov should be specified: using cov", call.=TRUE)
+	}
+
+	if(missing(u)) {
+		#cov is present; see previous checks
+		u <- as.list( sqrt(diag(cov)) )
+	}
 
         if(missing(cor)) {
                 if(missing(cov)) cor <- diag(1, length(u))
-                else cor <- cov / outer( sqrt(diag(cov)), sqrt(diag(cov)),"*" )
+                else cor <- cov2cor(cov)
         } 
 
         if(any(abs(cor)>1)) stop("cor contains values outside [-1,1]", call.=TRUE)
@@ -77,17 +103,12 @@ uncert.function<-function(obj, x, u, method=c("NUM", "kragten", "k2", "MC"), cor
         
         uv<-unlist(u)
         
-        #Construct covariance matrix cov if not supplied
         if(missing(cov)) {
                 cov<-outer(uv,uv,"*")*cor
-        } else {
-                if(!missing(u)) warning("Only one of u and cov should be specified: using cov")
-                #but we need u for the differentials, so...
-                u<-as.list( sqrt( diag(cov) ) )
-                names(u) <- names(x)
-        }
-        
-        
+        } 
+     ### End standard check for u, cov and cor.
+     
+       
         #Obtain differentials ci
         
         method <- match.arg(method, several.ok=TRUE)[1]
@@ -156,19 +177,37 @@ uncert.function<-function(obj, x, u, method=c("NUM", "kragten", "k2", "MC"), cor
 uncert.expression<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "MC"), cor, cov, 
                                 distrib=NULL, distrib.pars=NULL, B=200, delta=0.01, keep.x=TRUE, ...) {
         
+    ### Standard check for u, cov and cor.
+
         if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
+	
+	if(!missing(u) && !missing(cov)) {
+		warning("Only one of u and cov should be specified: using cov", call.=TRUE)
+	}
+
+	if(missing(u)) {
+		#cov is present; see previous checks
+		u <- as.list( sqrt(diag(cov)) )
+	}
 
         if(missing(cor)) {
                 if(missing(cov)) cor <- diag(1, length(u))
-                else cor <- cov / outer( sqrt(diag(cov)), sqrt(diag(cov)),"*" )
+                else cor <- cov2cor(cov)
         } 
 
         if(any(abs(cor)>1)) stop("cor contains values outside [-1,1]", call.=TRUE)
-
+        
         if(!is.null(names(x)) && !missing(u) ) {
                 if(!is.null(names(u)))  u <- u[names(x)]
                         else names(u) <- names(x)
         }
+        
+        uv<-unlist(u)
+        
+        if(missing(cov)) {
+                cov<-outer(uv,uv,"*")*cor
+        } 
+     ### End standard check for u, cov and cor.
         
         obj.names<-all.vars(obj)
         
@@ -182,8 +221,9 @@ uncert.expression<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "
                 f.obj<-function(){}
                 body(f.obj)<-obj
                 formals(f.obj) <- c(x,...)
-                rv<-uncert.function(obj=f.obj, x=x, u=u, method=method, 
+                rv<-uncert.function(obj=f.obj, x=x, method=method, 
                                 cor=cor, cov=cov, B=B, delta=delta, ...)
+                	#Removed u=u 16/08/2016 - cov is present 
                 rv$expr<-obj
         } else if(method=="GUM") {
                 d.obj<-deriv(obj, obj.names)
@@ -224,19 +264,37 @@ uncert.expression<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "
 uncert.formula<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "MC"), cor, cov, 
                         distrib=NULL, distrib.pars=NULL, B=200, delta=0.01, keep.x=TRUE, ...) {
 
+    ### Standard check for u, cov and cor.
+
         if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
+	
+	if(!missing(u) && !missing(cov)) {
+		warning("Only one of u and cov should be specified: using cov", call.=TRUE)
+	}
+
+	if(missing(u)) {
+		#cov is present; see previous checks
+		u <- as.list( sqrt(diag(cov)) )
+	}
 
         if(missing(cor)) {
                 if(missing(cov)) cor <- diag(1, length(u))
-                else cor <- cov / outer( sqrt(diag(cov)), sqrt(diag(cov)),"*" )
+                else cor <- cov2cor(cov)
         } 
 
         if(any(abs(cor)>1)) stop("cor contains values outside [-1,1]", call.=TRUE)
-
+        
         if(!is.null(names(x)) && !missing(u) ) {
                 if(!is.null(names(u)))  u <- u[names(x)]
                         else names(u) <- names(x)
         }
+        
+        uv<-unlist(u)
+        
+        if(missing(cov)) {
+                cov<-outer(uv,uv,"*")*cor
+        } 
+     ### End standard check for u, cov and cor.
         
         obj.names<-all.vars(obj)
 
@@ -253,8 +311,9 @@ uncert.formula<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "MC"
                         body(f.obj)<-obj[[2]]
                 } else stop("Invalid formula in uncertainty call")
                 formals(f.obj) <- c(x,...)
-                rv<-uncert.function(obj=f.obj, x=x, u=u, method=method, 
+                rv<-uncert.function(obj=f.obj, x=x, method=method, 
                                 cor=cor, cov=cov, B=B, delta=delta, ...)
+                        #Removed  u=u,  (cov present)
         } else if(method=="GUM") {
                 d.obj<-deriv(obj, obj.names)
                 y<-eval(d.obj, c(x,...)) 
@@ -278,7 +337,8 @@ uncert.formula<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "MC"
                         cov<-outer(uv,uv,"*")*cor
                 }
                 rv<-uncertMC(obj, x=x, method="MC", 
-                        cor=cor, cov=cov, distrib=distrib, distrib.pars=distrib.pars, B=B, keep.x=keep.x, ...)
+                        cor=cor, cov=cov, distrib=distrib, distrib.pars=distrib.pars, 
+                        B=B, keep.x=keep.x, ...)
                         #Does not need u as cov is supplied
                 rv$call <- match.call()
         } else {

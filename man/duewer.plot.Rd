@@ -1,6 +1,7 @@
 \name{duewer.plot}
 \alias{duewer.plot}
 \alias{duewer.plot.default}
+\alias{dplot}
 
 \title{
 Duewer concordance/apparent precision plot 
@@ -10,6 +11,8 @@ Produces a Duewer concordance/apparent precision plot, showing relative precisio
 uncertainty plotted against (relative) deviation from assigned value.
 }
 \usage{
+
+dplot(x, \dots)
 
 duewer.plot(x, \dots)
 
@@ -104,6 +107,7 @@ s0 being a median or other estimate of the typical standard deviation.
 Contours are, by default, labelled with probabilities corresponding to quantiles
 of the normal distribution.
 
+\code{dplot} is an alias for \code{duewer.plot}.
 }
 \value{
 This function is called for its side effect, which is the production of a plot.

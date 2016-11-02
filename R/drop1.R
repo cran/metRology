@@ -3,11 +3,13 @@ drop1.uncert<-function(object, scope, simplify=TRUE,
         
         if(object$method=="MC") stop("uncertMC objects are not currently supported by drop1.uncert")
         
-        options.which<-eval(formals()$which)
-        if( length( w<-grep(which, options.which) ) >= 1  ) 
-                which <- options.which[w[1]] 
-            else 
-              which <- options.which[1]
+        which <- if(simplify) match.arg(which) else match.arg(which, several.ok=TRUE)
+        #options.which<-eval(formals()$which)
+        #if( length( w<-grep(which, options.which) ) >= 1  ) 
+        #        which <- options.which[w[1]] 
+        #    else 
+        #      which <- options.which[1]
+	#Removed 2016-07-10 SLRE [causes warning on grep; match simpler]
 
         x.names<-row.names(object$budget)
         if( missing(scope) ) {
@@ -40,11 +42,12 @@ drop1.uncert<-function(object, scope, simplify=TRUE,
         rv[["% Change"]] <- 100*rv[,"u.change"]/u.y
         
         if(!simplify) {
+                rv <- rv[ ,names(rv) %in% which, drop=FALSE]
                 attr(rv, "expr") <- object$expr
                 class(rv)<-c("drop1.uncert", class(rv))
                 return(rv)
         } else {
-                rvs<-rv[,which]
+                rvs<-rv[,which[1]]
                 names(rvs)<-snames
                 return(rvs)
         } 
@@ -59,12 +62,15 @@ drop1.uncertMC<-function(object, scope, simplify=TRUE,
         if(any( abs( object$cor[upper.tri(object$cor)] ) > 2*.Machine$double.eps )) {
                 stop("Cannot execute drop with correlation present", call.=TRUE)
         }       
-        options.which<-eval(formals()$which)
-        if( length( w<-grep(which, options.which) ) >= 1  ) 
-                which <- options.which[w[1]] 
-            else 
-              which <- options.which[1]
 
+        which <- if(simplify) match.arg(which) else match.arg(which, several.ok=TRUE)
+        #options.which<-eval(formals()$which)
+        #if( length( w<-grep(which, options.which) ) >= 1  ) 
+        #        which <- options.which[w[1]] 
+        #    else 
+        #      which <- options.which[1]
+	#Removed 2016-07-10 SLRE [causes warning on grep; match simpler]
+	
         x.names<-row.names(object$budget)
         if( missing(scope) ) {
                 snames <- x.names
@@ -122,40 +128,41 @@ print.drop1.uncert<-function(x, ..., digits=2) {
                 cat("\n")
 
                 rvf<-format(as.data.frame(x), digits=digits)
-                rvf[,5] <- paste(rvf[,5], "%")
+
                 print(rvf, ...)
 }
 
 plot.drop1.uncert<-function(x, ..., which=c("% Change", "var", "u", "var.change", "u.change")) {
                 
-        options.which<-eval(formals()$which)
-        if( length( w<-grep(which, options.which) ) >= 1  ) 
-                which <- options.which[w[1]] 
-            else 
-              which <- options.which[1]
+        which <- match.arg(which, several.ok=TRUE)
+	
+        #Amended 2016-07-11 to loop over all ww in which 
+        #Simple loop to get all barplots.
+        for(ww in which) {
+		pars<-list(...)
+		if(is.null(pars$main)) pars$main <- paste( deparse(substitute(x)), "- Single variable deletions")
+		if(is.null(pars$ylab)) pars$ylab <- ww
 
-        pars<-list(...)
-        if(is.null(pars$main)) pars$main <- paste( deparse(substitute(x)), "- Single variable deletions")
-        if(is.null(pars$ylab)) pars$ylab <- which
+		expr<-attr(x, "expr")
+		expr.ch<-
+			if(class(expr)=="formula" ) {
+				paste(expr, collapse="")
+			} else if(is.function(expr)) {
+				deparse(expr)[1] 
+			} else if(is.expression(expr)) {
+				deparse(expr[[1]]) 
+			} else if(is.na(expr)) {
+				""
+			}
+
+		xv<-x[,ww]
+		names(xv)<-row.names(x)
+
+		do.call(barplot, c(list(height=xv), pars))
+
+		mtext(expr.ch, side=3)
+        }
         
-        expr<-attr(x, "expr")
-        expr.ch<-
-                if(class(expr)=="formula" ) {
-                        paste(expr, collapse="")
-                } else if(is.function(expr)) {
-                        deparse(expr)[1] 
-                } else if(is.expression(expr)) {
-                        deparse(expr[[1]]) 
-                } else if(is.na(expr)) {
-                        ""
-                }
-
-        xv<-x[,which]
-        names(xv)<-row.names(x)
-
-        do.call(barplot, c(list(height=xv), pars))
-
-        mtext(expr.ch, side=3)
 }
 
 

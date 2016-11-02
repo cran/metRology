@@ -45,7 +45,7 @@ S. L. R. Ellison \email{s.ellison@lgc.co.uk}
 }
 
 \seealso{
-\code{link{ilab-class}}, \code{link{subset.ilab}} \code{link{kplot}}.
+\code{\link{ilab-class}}, \code{\link{subset.ilab}} \code{\link{kplot}}.
 }
 \examples{
 data(Pb)

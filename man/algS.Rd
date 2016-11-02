@@ -1,7 +1,7 @@
 \name{algS}
 \alias{algS}
 \title{
-\sQuote{Algorithm S} - robust estimate of polled standard deviation
+\sQuote{Algorithm S} - robust estimate of pooled standard deviation
 }
 \description{
 \sQuote{Algorithm S} calculates a robust estimate of pooled standard deviation 

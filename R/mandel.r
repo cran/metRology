@@ -214,7 +214,20 @@ mandel.kh.data.frame <- function(x, g=NULL, m=NULL, na.rm=T, rowname=NULL, type=
 
 mandel.kh.ilab <- function(x, g=NULL, m=NULL, na.rm=T, rowname=NULL, type=c("h", "k"), method=c("classical", "robust"), n=NA, ...) {
 
-        name.g <- .get.mandel.rowname(deparse(substitute(g)), rowname)
+        if(missing(g)) {
+                g<-x$data$org
+                name.g <- if(is.null(rowname)) 
+                                "Organisation" 
+                        else 
+                                rowname
+        } else {
+                name.g <- if(is.null(rowname)) 
+                                deparse(substitute(g))
+                        else 
+                                rowname
+        }
+        
+        if(missing(m)||is.null(m)) m <- x$data$measurand
         
         mkh<-mandel.kh(x=x$data$x, g=g, m=x$data$measurand, na.rm=na.rm, rowname=rowname, type=type, method=method, n=n, ...)
         

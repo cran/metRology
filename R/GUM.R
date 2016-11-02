@@ -143,7 +143,6 @@ GUM <- function (var.name, x.i, u.i, nu.i, measurement.fnc, correlation = diag(l
     sigden = 10^floor(log10(k * uc))
     sigden = pmax(10^floor(log10(k * uc)),.Machine$double.eps)
     sigden[sigden==Inf] <- .Machine$double.eps
-    uc = round(uc/sigden, sig.digits.U) * sigden
     U = round(k * uc/sigden, sig.digits.U - 1) * sigden
     y = round(eval(meq)/sigden, sig.digits.U - 1) * sigden
     if (sum(correlation == diag(n)) < n^2) 

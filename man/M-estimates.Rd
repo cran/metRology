@@ -49,7 +49,8 @@ S. L. R. Ellison \email{s.ellison@lgc.co.uk}
 \examples{
 
 
-## Cd heat of vapourisation example from the paper cited above
+## Cd heat of vapourisation example 
+## from Paule, R. C.  and Mandel, J. (1982) - see ?mpaule
 x2<-c(27.044, 26.022, 26.340, 26.787, 26.796)
 v<-c(3, 76, 464, 3, 14)*1e-3
 

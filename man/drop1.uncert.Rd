@@ -70,9 +70,9 @@ change on dropping a variable is negative if the uncertainty reduces on removing
 The print method simply prints the output with a header formed from the \code{expr} attribute 
 and with '\%' appended to the "\% Change" column.
 
-The plot method produces a barplot of the chosen data column.  Arguments in \sQuote{\ldots} are passed to 
-barplot. If not already present in \sQuote{\ldots} a default main title and ylab are used. The \code{expr} 
-attribute is shown as marginal text if not NA.
+The plot method produces a barplot of the chosen data column.  A plot for each value in \code{which}
+is produced. Arguments in \sQuote{\ldots} are passed to barplot. If not already present in \sQuote{\ldots} 
+a default main title and ylab are used. The \code{expr} attribute is shown as marginal text if not NA.
 }
 
 \value{

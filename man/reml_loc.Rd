@@ -1,18 +1,19 @@
-\name{derSimonian-Laird}
-\alias{dsl}
-\alias{dsl.default}
+\name{REML location estimate}
+\alias{reml.loc}
+\alias{reml.loc.default}
 
 \title{
-derSimonian-Laird estimator
+Restricted maximum likelihood estimate of location
 }
 \description{
-Calculates derSimonian-Laird estimate of location, with standard error, assuming 
+Calculates REML estimate of location, with standard error, assuming 
 a random-effects model
 }
 \usage{
-	dsl(x, \dots, na.rm = FALSE)
+	reml.loc(x, \dots, na.rm = FALSE)
 
-	\method{dsl}{default}(x, s, n = NULL, groups = NULL, \dots, na.rm = FALSE)
+	\method{reml.loc}{default}(x, s, n = NULL, groups = NULL, na.rm = FALSE,
+	          tol=.Machine$double.eps^0.5, REML=TRUE, \dots)
 }
 \arguments{
   \item{x}{numeric vector of mean values for groups, or (if \code{groups} 
@@ -32,22 +33,31 @@ a random-effects model
   \item{na.rm}{logical: if \code{TRUE},  \code{NA} values are removed 
   	before processing.
 }
-  \item{\dots}{Further parameters passed to other methods.
+  \item{tol}{numeric tolerance for convergence, used by \code{optimize()}.
+}
+  \item{REML}{logical: if \code{TRUE} (the default),  the function optimises the REML 
+        criterion (see Details). If FALSE, the maximum likelihood criterion is used.
+}
+  \item{\dots}{Further parameters passed to \code{optimize()}.
 }
 }
 \details{
-\code{dsl} implements the derSimonian-Laird random-effects estimate of location,
-using the implementation described by Jackson (2010).
+\code{reml.loc} finds an excess variance \eqn{\tau^2}{tau^2} and location \eqn{\mu}{mu} that maximise the 
+restricted maximum likelihood criterion.
 
 The estimator assumes a model of the form
 \deqn{x_i=\mu+b_i+e_i}{x[i]=mu+b[i]+e[i]}
 in which \eqn{b_i}{b[i]} is drawn from \eqn{N(0, \tau^2)}{N(0, tau^2)} and
 \eqn{e_i}{e[i]} is drawn from \eqn{N(0, \sigma_i^2)}{N(0, sigma[i]^2)}.
 
-The estimator forms a direct calculation of \eqn{\tau}{tau}, and uses this to 
-form revised estimates of standard error \eqn{\sqrt{s_i^2+\tau^2}}{sqrt(s[i]^2+tau^2)} 
-in \code{x}, calculates weights as the inverse of these and in turn calculates a 
-weighted mean, allowing for any calculated excess variance \eqn{\tau^2}{tau^2}.
+By default the function maximises the data-dependent part of the negative log restricted likelihood:
+
+		\deqn{\frac{1}{2}  \left( \sum_{i=1}^{k}\frac{(x_i-mu)^2}{u_i^2}  + \sum_{i=1}^{k}log(u_i^2) + 
+			 log\left(\sum_{i=1}^{k}(1/u_i^2)\right) \right)}
+
+where \eqn{u_i=s_i^2 + \tau^2}{u[i]=s[i]^2 + tau^2} and \eqn{k} is the number of mean values.
+If \code{REML=FALSE}, the final term is omitted to give the maximum likelihood criterion.
+
 
 This implementation permits input in the form of:
 \itemize{
@@ -72,11 +82,13 @@ This implementation permits input in the form of:
       }
       \item{tau}{The excess variance (as a standard deviation).
       }
+      \item{REML}{Logical, giving the value of REML used.
+      }
   }
 
 }
 \references{
-Jackson et al. (2010) J Stat Plan Inf 140, 961-970 
+None, but see documentation for the metafor package for a more general implementation of REML.
 }
 \author{
 S L R Ellison \email{s.ellison@lgc.co.uk}
@@ -91,7 +103,7 @@ S L R Ellison \email{s.ellison@lgc.co.uk}
   pcb105 <- data.frame(x=c(10.21, 10.9, 10.94, 10.58, 10.81, 9.62, 10.8),
                s=c(0.381, 0.250, 0.130, 0.410, 0.445, 0.196, 0.093))
                		
-  with( pcb105, dsl(x, s) )
+  with( pcb105, reml.loc(x, s) )
 
 }
 \keyword{ univar }

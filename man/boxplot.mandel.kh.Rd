@@ -121,7 +121,7 @@ S Ellison \email{s.ellison@lgc.co.uk}
 }
 
 \seealso{
-\code{link{boxplot}} for box plot argumants, and \code{link{text}} for outlier label
+\code{\link[graphics]{boxplot}} for box plot arguments, and \code{\link[graphics]{text}} for outlier label
 location, colour and rotation.
 \code{\link{mandel.h}}, \code{\link{mandel.k}}, \code{\link{mandel.kh}},
 \code{\link{pmandelh}}, \code{\link{pmandelk}}  for probabilities, quantiles etc.

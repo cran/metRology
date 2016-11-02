@@ -16,7 +16,7 @@
 \arguments{
   \item{q}{Vector of quantiles.}
   \item{p}{Vector of probabilities.}
-  \item{n}{Scalar: number of observations from which msd was calculated.}
+  \item{n}{Number of observations from which msd was calculated. }
   \item{sd}{Standard deviation, used to scale q.}
   \item{scale}{If scale is \code{TRUE}, \code{sd} is divided by \code{sqrt(2)} prior to calculating
   	\code{p} or \code{q}.}
@@ -34,13 +34,16 @@
 	The probabilities are calculated using quadrature integration over a distribution of an order 
 	statistic, and may be quite slow (seconds for a vector of several hundred 100 values of q on an 
 	Intel x86 machine running at 1GHz). \code{qmsd} is obtained even more slowly by root-finding 
-	from \code{pmsd} using \code{uniroot}.  
+	from \code{pmsd} using \code{uniroot}.
+	
+	\code{n}, \code{p} and \code{q} are recycled to the length of the longest, as necessary.
 
 	Note that both functions are appropriate for the distribution of single values. If 
 	seeking an outlier test, adjust \code{p} for \code{n} comparisons before applying \code{qmsd}.
 }
 \value{
-	A vector of length \code{length(p)} or \code{length(q)} of quantiles or probabilities respectively.
+	A vector of length \code{length(p)} or \code{length(q)} (or, if longer, \code{length(n)}) of 
+	quantiles or probabilities respectively.
 }
 \author{S Ellison \email{s.ellison@lgc.co.uk}}
 \seealso{

@@ -14,7 +14,7 @@ applications using the methods from the Joint Committee on Guides in Metrology (
 approximates the uncertainty of a function of random variables that define a 
 measurement result by computing the uncertainty of the first-order Taylor series for
 the measurement function. This function also serves as the primary computational tool
-underlying the GUM uncertainty templates found in the metRology.xls user interface.
+underlying the GUM uncertainty templates found in the metRology for Microsoft Excel user interface.
 }
 
 \usage{
