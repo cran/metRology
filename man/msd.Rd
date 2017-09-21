@@ -9,7 +9,8 @@
   Generates median of scaled differences from each point in a data set to all other points..
 }
 \usage{
-	msd(x, s=mad , \dots)
+        msd(x, s=mad , \dots)
+	
 }
 \arguments{
   \item{x}{Vector of observations}
@@ -33,10 +34,19 @@
 	
 }
 \value{
-	A vector of length \code{length(x)} of median scaled deviations for each observation.
+	An object of class "MSD", consisting of a vector of length \code{length(x)} of median 
+	scaled absolute deviations for each observation, with attributes:
+        \item{names}{character vector of names, taken from \code{x}}
+        \item{x}{values supplied as \code{x}}
+        \item{s}{values supplied as \code{s}}
+        
+        
+        Print and plotting methods are currently provided for the \code{"MSD"} class; 
+        see \code{\link{MSD-class}}.
 }
+
 \seealso{
-  \code{\link{pmsd}}, \code{\link{qmsd}}.
+  \code{\link{pmsd}}, \code{\link{qmsd}}, \code{\link{MSD-class}}.
 }
 \author{
 S. L. R. Ellison \email{s.ellison@lgc.co.uk}

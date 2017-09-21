@@ -102,7 +102,7 @@ reml.loc.default<-function(x, s, n=NULL, groups=NULL, na.rm=FALSE,
 	lambda <- unname(rv$minimum)
         w <- 1 / (lambda + std.err^2)
         mu.reml <- unname(sum( x * w ) / sum (w))
-	s.reml <- 1/sum(w)
+	s.reml <- sqrt(1/sum(w))
 	s.adj <- sqrt(std.err^2 + lambda)
 
 

@@ -8,7 +8,11 @@
 cplot<-function(x,u,labels=names(x), p.adjust.method="holm", ordered=TRUE,
 	breaks=c(0,0.001,0.01, 0.05, 0.1,1), col=terrain.colors(length(breaks)-1), log.p=FALSE,
 	main=paste("Consistency map -", deparse(substitute(x))), subtitle=NULL, key=FALSE, 
-	key.width=2.54, key.height=0.6,...) {
+	key.width=2.54, key.height=0.6, ...) {
+	
+	axis.local <- function(side, at, labels, las.local, cex.axis=1.0, ...) {
+		axis(side, at=at, labels=labels, las=las.local, cex.axis=cex.axis)
+	}
 	
 	L<-length(x)
 	ID<-1:L
@@ -61,8 +65,8 @@ cplot<-function(x,u,labels=names(x), p.adjust.method="holm", ordered=TRUE,
 	
 	image(x=1:L, y=1:L, z=p, breaks=breaks, col=col, xaxt="n", yaxt="n",xlab="", ylab="",...)	
 	box()
-	axis(1,at=1:L, labels=labels[oo], las=2)
-	axis(2,at=1:L, labels=labels[oo], las=1)
+	axis.local(1,at=1:L, labels=labels[oo], las.local=2, ...)
+	axis.local(2,at=1:L, labels=labels[oo], las.local=1, ...)
 	title(main=main)
 	if(log.p && is.null(subtitle)) mtext(expression(-log[10](p)), side=3,line=0.2)
 	

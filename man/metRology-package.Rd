@@ -19,7 +19,37 @@ The metRology package includes functions for:
 	\item Support functions for an excel interface
   } 
 
-Improvements in this version (0.9-23-2) from version 0.9-22 include: 
+Changes in this version (0.9-26-2) from version 0.9-26-1 include: 
+  \itemize{
+	\item Fix to a bug in \code{\link{reml.loc}} which failed to report the standard uncertainty \code{u} 
+	correctly. 
+	\item \code{cplot} now respects \code{cex.axis} as a plot parameter. 
+	}
+
+Changes in this version (0.9-26-1) from version 0.9-26-0 include: 
+  \itemize{
+	\item Added plot and barplot methods for MSD class. 
+	\item Minor correction to code in \code{msd} to prevent over-replication
+	      of estimated \code{s} when \code{s} is a function and returns a vector.
+	}
+
+Changes in this version (0.9-26) from version 0.9-25 include: 
+  \itemize{
+	\item \code{\link{msd}} now returns an object of class \code{"MSD"} which
+	      includes the original data as attributes to permit subsequent bootstrapping.
+	\item A new function, \code{\link{bootMSD}} that performs parametric
+		bootstrapping for \code{MSD} objects to obtain critical values 
+		and \emph{p}-values for the general case where standard uncertainties/standard 
+		errors differ appreciably.
+	}
+
+Improvements in this version (0.9-25) from version 0.9-23 include: 
+  \itemize{
+	\item \code{\link{plot.d.ellipse}} now takes default \code{xlab} and \code{ylab} from 
+	      dimnames in the supplied \code{cov.dellipse}.
+	}
+
+Improvements in version 0.9-23 from version 0.9-22 include: 
   \itemize{
 	\item A wholly new Youden plot (see \code{\link{yplot}}), with many options for confidence ellipses
 	\item A REML location estimate, \code{\link{reml.loc}}, in addition to \code{\link{vr.mle}};

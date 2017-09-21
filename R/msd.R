@@ -5,7 +5,7 @@
 #Still O(n^2) for distance calculation, but a lot faster and lighter on RAM
 msd<-function(x, s=mad , ...) {
         ss <- if(is.function(s)) {
-                rep(s(x, ...), length(x))
+                rep(s(x, ...), length.out=length(x))
         } else {
                 if(length(s) == 1) {
                         rep(s, length(x))
@@ -20,7 +20,10 @@ msd<-function(x, s=mad , ...) {
         
         structure( 
         	sapply(N, function(n) median( abs(x[n] - x[-n])/sqrt(ss[n]+ss[-n]) ) ),
-        	names=names(x)
+        	names=names(x),
+        	x=x,
+        	s=sqrt(ss),
+        	class="MSD"
         )
 }
 

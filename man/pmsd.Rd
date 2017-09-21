@@ -47,7 +47,9 @@
 }
 \author{S Ellison \email{s.ellison@lgc.co.uk}}
 \seealso{
-  \code{\link{msd}}.
+  \code{\link{msd}} for calculation of MSD values, and \code{\link{bootMSD}} for 
+  a parametric bootstrap (MCS) method of obtaining \emph{p}-values and quantiles
+  for the more general non-IID case.
 }
 \examples{
 

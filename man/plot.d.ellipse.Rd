@@ -11,7 +11,7 @@ Plots a number of data ellipses specified by }
 		fill = NA, density = NULL, angle = 45, add = FALSE, npoints = 100, 
 		xlim = NA, ylim = NA, 
 		prinax = FALSE, col.prinax = 1, lty.prinax = 1, lwd.prinax = 1, 
-		 ...)
+		xlab=NULL, ylab=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -40,6 +40,10 @@ Plots a number of data ellipses specified by }
 }
   \item{col.prinax, lty.prinax, lwd.prinax}{
 	Colour, line type and line width for principal axes. 
+}
+  \item{xlab, ylab}{
+	Axis labels passed to \code{plot} if \code{add == FALSE}. Defaults to dimension names
+	in \code{x} or, if those are \code{NULL}, to "X" and "Y".
 }
   \item{\dots}{
 	Additional arguments, passed to \code{plot} if \code{add == TRUE}. 

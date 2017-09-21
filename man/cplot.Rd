@@ -28,7 +28,8 @@
   \item{main, subtitle}{Main and subtitle for plot.}
   \item{key}{If \code{TRUE} a key is added to the plot.}
   \item{key.width, key.height}{Width and height of key, if plotted. See details for specification.}
-  \item{\dots}{Graphical parameters passed to \code{image}.}
+  \item{\dots}{Graphical parameters passed to \code{image}. If present, \code{cex.axis} is passed 
+               to \code{axis} for main figure axes only.}
 }
 \details{
 	

@@ -10,7 +10,7 @@ by \code{\link{plot.d.ellipse}}.
 }
 \usage{
 cov.dellipse(x, y = NULL, cov.method = c("spearman", "kendall", "pearson", 
-                           "MCD", "OGK", "GK", "gk", "mcd", "mve"), 
+                           "MCD", "OGK", "GK", "gk", "rgk", "mcd", "mve"), 
                            scalefn = NULL, locfn = NULL, cov.control = list())
 }
 
@@ -97,6 +97,16 @@ A character value specifying the covariance method used.
 		\item{\code{gk}}{As \code{GK}, except that the variables are scaled to unit (robust) sd (using \code{scalefn}) before 
 		                calculating the covariance (which is then rescaled). This can prevent large scale differences from 
 		                masking outliers in a variable with small scale.} 
+		\item{\code{rgk}}{Implements  Gnanadesikan and Kettenring's second covariance estimate 
+			based on scaled variables \eqn{(Z_1, Z_2)}{(Z[1], Z[2])} and a robust correlation \eqn{\rho^*}{rho}
+			calculated as 
+			\deqn{\rho^*=(\hat{\sigma}_{+}^{*2} - \hat{\sigma}_{-}^{*2})/(\hat{\sigma}_{+}^{*2} - \hat{\sigma}_{-}^{*2})}{%
+				rho=(sigma[+]^2 - sigma[-]^2)/(sigma[+]^2 - sigma[-]^2)}
+			where \eqn{\hat{\sigma}_{+}^{*2}}{sigma[+]^2} and \eqn{\hat{\sigma}_{-}^{*2}}{sigma[-]^2} are robust variances of 
+			\eqn{(Z_1+Z_2)}{Z[1]+Z[2]} and \eqn{(Z_1-Z_2)}{Z[1]-Z[2]} respectively, calculated using \code{scalefn}. 
+			The advantage over \code{"gk"} and \code{"GK"} is that the correlation
+			coefficient is guaranteed to be in \eqn{[-1,1]}, making for a positive definite covariance matrix. Scaling also
+			helps prevent large scale differences from masking outliers in a variable with small scale.} 
 		\item{\code{mve}}{Uses uses \code{\link{cov.mve}} in the MASS package, which is based on the location and covariance matrix for 
 				a minimum volume ellipsoid. The method neither requires nor uses \code{scalefn} or \code{locfn}.}
 	}
