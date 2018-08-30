@@ -88,8 +88,8 @@ S. L. R. Ellison, \email{s.ellison@lgc.co.uk}
 
 \seealso{
 \code{\link{uncertMC-class}}, \code{\link[graphics]{hist}}, 
-\code{\link[stats]{qqnorm}}, \code{\link[stats]{qqline}}, 
-\code{\link[stats]{density}}, \code{\link[stats]{plot.density}}
+\code{\link{qqnorm}}, \code{\link{qqline}}, 
+\code{\link{density}}, \code{\link{plot.density}}
 
 }
 \examples{

@@ -70,7 +70,7 @@ S. L. R. Ellison \email{s.ellison@lgc.co.uk}
 
 
 \seealso{
-\code{\link[stats]{runif}}
+\code{\link{runif}}
 }
 \examples{
      require(graphics)

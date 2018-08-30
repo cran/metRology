@@ -6,7 +6,8 @@ gplot <- function(x, main=NULL, xlab=NULL, ylab=deparse(substitute(x)) ,
 				ylim=NULL, las=1, axes=TRUE, cex.axis=1, frame.plot = axes,
 				lwd=1, lty=1,col=par("col"), 
 				separators=TRUE, col.sep="lightgrey", lwd.sep=1, lty.sep=1,
-				zero.line=TRUE, lwd.zero=1, col.zero=1, lty.zero=1, ...) {
+				zero.line=TRUE, lwd.zero=1, col.zero=1, lty.zero=1, 
+				spacing=NA, ...) {
 		
 		if(length(dim(x)) != 2) stop("gplot requires an object with two dimensions")
 		if(is.null(row.names(x))) stop("gplot requires an object with valid row names")
@@ -26,7 +27,8 @@ gplot <- function(x, main=NULL, xlab=NULL, ylab=deparse(substitute(x)) ,
 			
 		mids <- 1:ng
 		
-		sep <- min(0.3, 0.6/max(1, ni-1))
+		sep <- if(missing(spacing)) min(0.3, 0.6/max(1, ni-1))
+			else spacing
 		
 		offsets <- cumsum(rep(sep, ni))
 		

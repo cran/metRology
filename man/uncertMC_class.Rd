@@ -96,7 +96,7 @@ S. L. R. Ellison \email{s.ellison@lgc.co.uk}
 }
 \seealso{
   \code{\link{uncert}}, \code{\link{uncertMC}}, \code{\link{uncert-class}}, 
-  \code{\link[base]{print.data.frame}}, \code{\link[base]{format}}.
+  \code{\link{print.data.frame}}, \code{\link{format}}.
 }
 \examples{
 

@@ -85,7 +85,7 @@ S. L. R. Ellison \email{s.ellison@lgc.co.uk}
 \seealso{
   \code{\link{uncert}}, especially for calculation methods; 
   \code{\link{plot.uncert}}, \code{\link{uncertMC-class}},
-  \code{\link[base]{print.data.frame}}, \code{\link[base]{format}}.
+  \code{\link{print.data.frame}}, \code{\link{format}}.
 }
 \examples{
 

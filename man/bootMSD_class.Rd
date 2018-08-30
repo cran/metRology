@@ -49,7 +49,8 @@
 	Label for vertical axis, passed to \code{barplot}
 	}
   \item{names.arg}{
-	Labels for individual bars in bar plot, passed to \code{barplot}
+	Labels for individual bars in bar plot, passed to \code{barplot}. If \code{names(height)} 
+	is \code{NULL}, bars are numbered. 
 	}
   \item{crit.vals}{
 	If \code{TRUE}, individual critical values based on observation-specific 

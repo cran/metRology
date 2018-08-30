@@ -12,7 +12,8 @@ gplot is primarily used by plot.mandel.kh to produce the underlying grouped data
 		frame.plot = axes, lwd = 1, lty = 1, col = par("col"), 
 		separators = TRUE, col.sep = "lightgrey", lwd.sep = 1, 
 		lty.sep = 1, zero.line = TRUE, 
-		lwd.zero = 1, col.zero = 1, lty.zero = 1, ...)
+		lwd.zero = 1, col.zero = 1, lty.zero = 1, 
+		spacing=NA, ...)
 }
 
 \arguments{
@@ -55,6 +56,10 @@ A matrix or data frame to be plotted.
 }
   \item{\dots}{
 	Other graphical parameters passed to \code{plot}.
+}
+  \item{spacing}{
+	Spacing for data within each group, as a fraction of inter-group spacing. 
+	Defaults to 0.3 or less.
 }
 }
 \details{

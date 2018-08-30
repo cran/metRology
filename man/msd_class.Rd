@@ -14,7 +14,7 @@
 \usage{
        \method{print}{MSD}(x, ...)
 
-       \method{plot}{MSD}(x, type="h", ...)
+       \method{plot}{MSD}(x, type="h", ylab="MSD", ...)
 
        \method{barplot}{MSD}(height, ylab="MSD", names.arg=names(height), 
 	crit.vals=TRUE, lty.crit=c(2,1), col.crit=2, lwd.crit=c(1,2), 
@@ -33,7 +33,8 @@
 	Label for vertical axis, passed to \code{barplot}
 	}
   \item{names.arg}{
-	Labels for individual bars in bar plot, passed to \code{barplot}
+	Labels for individual bars in bar plot, passed to \code{barplot}. If \code{names(height)} 
+	is \code{NULL}, bars are numbered. 
 	}
   \item{crit.vals}{
 	If \code{TRUE}, horizontal lines at critical values are added to the plot. 

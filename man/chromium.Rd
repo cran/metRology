@@ -12,9 +12,9 @@ intended to provide data for certification of a reference material.
 \format{
   A data frame with 28 observations on the following 2 variables.
   \describe{
-    \item{\code{QC}}{Chromium concentrations (mg/kg) reported on a 
+    \item{\code{QC}}{Chromium concentrations (ug/kg) reported on a 
     	material used as a quality control material}
-    \item{\code{RM}}{Chromium concentrations (mg/kg) reported on a 
+    \item{\code{RM}}{Chromium concentrations (ug/kg) reported on a 
     	candidate reference material material used as a quality control material}
   }
 }

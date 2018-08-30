@@ -79,6 +79,12 @@ Each is a \eqn{4*npoints\times 2}{4*n by 2} matrix suitable for passing direct t
 	interlaboratory comparisons. (2005) International organization for 
 	Standardizaton, Geneva
 
+	
+	Jackson, J. E. (1956) \emph{Quality control methods for two related variables}.
+	Industrial Quality Control, Vol. 7, pp. 2-6 
+
+	Jackson, J. E. (1959) \emph{Control Methods for Several Related Variables}.
+	Technometrics, Vol. 1, pp. 359-377
 }
 \author{
 	S L R Ellison

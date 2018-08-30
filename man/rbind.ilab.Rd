@@ -27,11 +27,11 @@ cbind(..., deparse.level = 1)
 
 \arguments{
   \item{\dots}{For \code{rbind} and \code{c}, objects of class \sQuote{ilab}
-     to be combined.For \code{cbind}, one 'ilab' object and vectors, scalars 
+     to be combined. For \code{cbind}, one 'ilab' object and vectors, scalars 
      or data frames to be appended to the 'ilab' object's $data element. See Details.
 }
   \item{deparse.level}{integer controlling the construction of labels. Passed 
-  to \code{\link[base]{rbind.data.frame}} or \code{base::cbind}.
+  to \code{\link[base:cbind]{rbind.data.frame}} or \code{base::cbind}.
 }
   \item{recursive}{logical, controlling recursion in lists. Included solely for 
      consistency with \code{base::c}; no effect in \code{c.ilab}. 
@@ -42,7 +42,7 @@ cbind(..., deparse.level = 1)
 The generic and default cbind and rbind functions defined by metRology use the first 
 object in \code{'...'} to decide which method to apply. This differs from the behaviour 
 of these functions in the base package, which dispatch based on inspection of 
-all objects in \code{'...'} (see \code{\link[base]{rbind}} in the base package for details). 
+all objects in \code{'...'} (see \code{\link[base:cbind]{rbind}} in the base package for details). 
 Control is, however, passed to the base package functions if an ilab object is not first 
 in the list.
 

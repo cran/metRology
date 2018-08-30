@@ -1,20 +1,20 @@
 Package: metRology
-Version: 0.9-26-2
-Date: 2017-09-07
+Version: 0.9-28-0
+Date: 2018-08-27
 Title: Support for Metrological Applications
 Author: Stephen L R Ellison <s.ellison@lgc.co.uk>.
-Maintainer: Stephen L R Ellison <s.ellison@lgc.co.uk>
+Maintainer: Stephen L R Ellison <s.ellison@lgcgroup.com>
 Depends: R (>= 2.14.0), base, stats
 Imports: graphics, MASS, numDeriv, robustbase
 Description: Provides classes and calculation and plotting functions 
  for metrology applications, including measurement uncertainty estimation
  and inter-laboratory metrology comparison studies. 
 License: GPL (>= 2)
-URL: http://metrology.sourceforge.net
+URL: https://r-forge.r-project.org/projects/metrology/
 Repository: CRAN
 Repository/R-Forge/Project: metrology
-Repository/R-Forge/Revision: 93
-Repository/R-Forge/DateTimeStamp: 2017-09-08 20:28:19
-Date/Publication: 2017-09-21 21:32:21 UTC
+Repository/R-Forge/Revision: 117
+Repository/R-Forge/DateTimeStamp: 2018-08-27 22:25:11
+Date/Publication: 2018-08-30 11:22:14 UTC
 NeedsCompilation: no
-Packaged: 2017-09-08 20:45:10 UTC; rforge
+Packaged: 2018-08-27 22:50:16 UTC; rforge

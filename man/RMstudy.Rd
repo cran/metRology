@@ -30,7 +30,7 @@ in an inter-laboratory certification study for a candiate drinking reference mat
 \details{
 The data set includes results for eight of a total of 23 elements studied in an 
 inter-laboratory study of a candidate reference material.  All observations are 
-reported in mg/l. 
+reported in ug/l. 
 Laboratories were asked to report 5 replicate observations for each element. Replicate 
 observations appear on separate rows. Most but not all laboratories reported five 
 replicates, and some laboratories reported no results for some elements. The eight

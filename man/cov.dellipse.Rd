@@ -34,12 +34,12 @@ A character value specifying the covariance method used.
 	scale estimator. For cov.method "GK", scalefn must accept 
 	an additional argument \code{mu.too}. When mu.too is true, \code{scalefn()} should 
 	return a numeric vector of length 2 containing location and scale estimates. See 
-	\code{\link[robustbase]{scaleTau2}}, \code{\link[robustbase]{s_Qn}},\code{\link[robustbase]{s_mad}}, or \code{\link[robustbase]{s_IQR}} 
+	\code{\link{scaleTau2}}, \code{\link{s_Qn}},\code{\link{s_mad}}, or \code{\link{s_IQR}} 
 	for examples to be used as \code{scalefn} argument.
 }
   \item{locfn}{
 	A function that computes univariate location estimates from a numeric vector. 
-	If used, \code{scalefn()} should return a single numeric value containing a location 
+	If used, \code{locfn()} should return a single numeric value containing a location 
 	(mean) estimate. 
 }
   \item{cov.control}{
@@ -68,7 +68,7 @@ A character value specifying the covariance method used.
 		                      not take a \code{mu.too} argument.}
 		\item{\code{MCD}, \code{mcd}}{Both compute the Minimum Covariance Determinant (MCD) estimator, a robust multivariate 
 				      location and scale estimate with a high breakdown point, via the 'Fast MCD' or 'Deterministic MCD' 
-				      ("DetMcd") algorithm. \code{"MCD"} uses the implementation \code{\link[robustbase]{covMcd}} in the robustbase package; 
+				      ("DetMcd") algorithm. \code{"MCD"} uses the implementation \code{\link{covMcd}} in the robustbase package; 
 				      \code{"mcd"} uses \code{\link{cov.mcd}} in the MASS package.
 				      Neither require or use \code{scalefn} or \code{locfn}. 
 				      Note that these MCD implementations differ appreciably for small samples (at least to n=60). \code{MCD} 
@@ -76,21 +76,21 @@ A character value specifying the covariance method used.
 				      sample correction. As a result, the \code{mcd} scales can be considerably smaller for modest 
 				      data set sizes.}
 		\item{\code{OGK}}{Computes the orthogonalized pairwise covariance matrix estimate described by Maronna and Zamar (2002),
-				as implemented by the \code{\link[robustbase]{covOGK}} in the robustbase package. 
-				By default, scale and location use \code{\link[robustbase]{scaleTau2}} from robustbase. Alternatives 
+				as implemented by the \code{\link{covOGK}} in the robustbase package. 
+				By default, scale and location use \code{\link{scaleTau2}} from robustbase. Alternatives 
 				can be specified either by providing \strong{both} \code{scalefn} and \code{locfn} or by including
 				an argument \code{sigmamu} in \code{cov.control}, which is passed to \code{covOGK}. See 
-				\code{\link[robustbase]{covOGK}} for a description of \code{sigmamu}.
+				\code{\link{covOGK}} for a description of \code{sigmamu}.
 				If \code{sigmamu} is not present in \code{cov.control} and both \code{scalefn} and \code{locfn} 
 				are provided, scale and location are constructed from \code{scalefn} and \code{locfn}. If only one
 				of these is provided, a warning is issued and \code{]{scaleTau2}} is used.
 				}
 		\item{\code{GK}}{Computes a simple pairwise covariance estimate suggested by Gnanadesikan and Kettenring (1972),
-				as implemented by the \code{\link[robustbase]{covGK}} in the robustbase package. 
-				By default, scale and location use \code{\link[robustbase]{scaleTau2}} from robustbase. Alternatives 
+				as implemented by the \code{\link{covGK}} in the robustbase package. 
+				By default, scale and location use \code{\link{scaleTau2}} from robustbase. Alternatives 
 				can be specified either by providing \code{scalefn} and \code{locfn} or by including
 				an argument \code{scalefn} in \code{cov.control}, which is passed to \code{covGK}. See 
-				\code{\link[robustbase]{covGK}} for a description of \code{scalefn}.
+				\code{\link{covGK}} for a description of \code{scalefn}.
 				If \code{scalefn} is not present in \code{cov.control}, scale and location are constructed from \code{scalefn} 
 				and \code{locfn}. If \code{locfn} is omitted, \code{scalefn} is used if it takes an argument \code{mu.too} 
 				and the median is used otherwise.} 
@@ -138,8 +138,8 @@ Stephen L R Ellison
 }
 
 \seealso{
- \code{\link{cov.rob}} in MASS, \code{\link[robustbase]{covMcd}}, \code{\link[robustbase]{covOGK}} and 
- \code{\link[robustbase]{covGK}} in robustbase.
+ \code{\link{cov.rob}} in MASS, \code{\link{covMcd}}, \code{\link{covOGK}} and 
+ \code{\link{covGK}} in robustbase.
 
 }
 \examples{

@@ -9,16 +9,16 @@ Internal functions for package RKC.
 The following functions are used internally by pmsd and qmsd.
 }
 \usage{
-.pmsd.xnorm(q, x, n, sd = 1, scale = FALSE)
+.pmsd.xnorm(q, x, n, sd = 1, scale = FALSE, method="exact")
 }
 
 \arguments{
   \item{q}{vector of quantiles}
   \item{x}{scalar value}
   \item{n}{number of observations in data set to which msd is applied}
-  \item{sd}{a standard deviation}
   \item{sd}{Standard deviation, used to scale q.}
   \item{scale}{If scale is \code{TRUE}, \code{sd} is divided by \code{sqrt(2)}.}
+  \item{method}{Controls method of calculation; see \code{\link{pmsd}} for details.}
   }
 \details{
 Provides the distribution function for msd given a value x, using the cumulative 

@@ -4,18 +4,18 @@ importFrom(MASS, hubers, rlm, mvrnorm, ginv, cov.rob, cov.mcd, cov.mve)
 importFrom(numDeriv, grad)
 importFrom(robustbase, covGK, covOGK, covMcd, scaleTau2, s_Qn, s_IQR, Qn, Sn)
 importFrom("grDevices", "dev.interactive", "devAskNewPage",
-             "terrain.colors")
+             "terrain.colors", "nclass.FD", "nclass.Sturges", "nclass.scott")
 importFrom("graphics", "abline", "arrows", "axis", "barplot", "box",
              "boxplot", "hist", "layout", "lcm", "lines", "mtext", "par",
              "plot", "plot.new", "plot.window", "points", "polygon", "segments",
-             "strheight", "text", "title")
+             "strheight", "text", "title", "rect", "strwidth")
 importFrom("stats", "aggregate", "as.formula", "ave", "coef", "cor",
              "cov", "cov2cor", "dbeta", "density", "deriv", "dnorm", "integrate",
              "lm", "mad", "mahalanobis", "median", "na.omit", "optimize", "p.adjust",
              "pbeta", "pchisq", "pnorm", "qbeta", "qchisq", "qf",
              "qnorm", "qqline", "qqnorm", "qt", "rbeta", "rchisq",
              "rnorm", "runif", "sd", "terms", "uniroot", "var", 
-             "p.adjust.methods", "quantile", "symnum")
+             "p.adjust.methods", "quantile", "symnum", "na.pass")
 importFrom("utils", "combn", "getS3method", "stack")
 
 S3method( "[", ilab )
@@ -23,6 +23,8 @@ S3method( MM.estimate, default )
 S3method( barplot, bootMSD )
 S3method( barplot, mandel.kh )
 S3method( barplot, MSD )
+S3method( blockplot, default )
+S3method( blockplot, formula )
 S3method( bootMSD, default )
 S3method( bootMSD, MSD )
 S3method( boxplot, mandel.kh )
