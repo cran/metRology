@@ -1,4 +1,4 @@
-9c1ff0ebaf7396a6f907db7e3749b4c8 *DESCRIPTION
+8354c92283f3bfb3d7c2ae5b9b02e445 *DESCRIPTION
 eb900d48143d1e63cd81c17b0f9180c3 *NAMESPACE
 df2ae9cfc5c4ce2ba4654ef0644edb51 *R/GUM.R
 09a13e9e3c38725c4b15ea8e15a0e150 *R/GUM.validate.R
@@ -7,7 +7,7 @@ df2ae9cfc5c4ce2ba4654ef0644edb51 *R/GUM.R
 96eb3367ede1e25039cbad506f497fd2 *R/M_estimates.r
 0cc6444afdb11049ea6c204f2cc8710c *R/XSplot.r
 7ecc95e289178ea7e16a8397aa779f22 *R/algAS.r
-0e0c6825712c6c62a0453d5053679c32 *R/blockplot.r
+f88477f8888dc635ae0903e74b1324fc *R/blockplot.r
 9fd95c5ffcf41804583ee4ca449afc49 *R/bootMSD.R
 2c319be863f048c320daec91dc005acd *R/build_cor.R
 4794555a2ac78fdde021f64a70a5c79b *R/contribs.R
@@ -34,7 +34,7 @@ f1669e41c271e609906e940a5f1e707f *R/uncert.R
 2dc04d10c5b67b28b9e1745caaf19bb2 *R/vr.r
 197c5ef845899a8db0bf2e5feca8a09a *R/ws.R
 25dba76b7691a787b2b0a24e78e6e19e *R/yplot.r
-a18ec9e91af7abafeaae0070aa719934 *build/partial.rdb
+6bc7bdd7fc9d9f23f17866b974626ffe *build/partial.rdb
 73e205a6f8248074a4c813100a7ac51b *data/GUM.H.1.rda
 51ce68b73951bdb1ad962568c3018e67 *data/Pb.rda
 044ba77bafc307e0a6c8e4a597621028 *data/RMstudy.rda
@@ -78,7 +78,7 @@ f24594d0e0847802c25ac4f45828401e *man/loc_est.Rd
 8f1aacdd97f2db50cf85fdd8b01545b2 *man/mandel.h.Rd
 15118c3c58aa70470662d86decc513f9 *man/mandel.k.Rd
 0c5facd56f48f2f08a203e0367236f11 *man/mandel.kh.Rd
-f9a0f5c46f5c8c5cdc9b1d115390dc6b *man/metRology-package.Rd
+3c949e5a87a63d378f0ef706fd017d79 *man/metRology-package.Rd
 7bbf2f8c68e11800c5e53726a1dae716 *man/metRology_pkg-internal.Rd
 924a7b05ee45d8bff9b0f1f317cb1fae *man/methods.ilab.Rd
 e81786007b1feaf2909a77de993dfe9d *man/mle.1wre.Rd

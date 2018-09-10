@@ -19,7 +19,12 @@ The metRology package includes functions for:
 	\item Support functions for an excel interface
   } 
 
-Changes in version 0.9-28-0 from version 0.9-22-2 include: 
+Changes in version 0.9-28-1 from version 0.9-28-0 include: 
+  \itemize{	
+	\item Fixed \code{blockplot} x-axis label, which was incorrect.
+ 
+ }
+Changes in version 0.9-28-0 from version 0.9-27-2 include: 
   \itemize{	
 	\item A new plot, \code{blockplot}, added. A \dQuote{block plot} is a histogram variant identifiying 
 	individual data points, which appear as \dQuote{blocks} in the plot. \code{blockplot} provides for grouped 

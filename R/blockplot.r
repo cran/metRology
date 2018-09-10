@@ -166,7 +166,7 @@ blockplot.default <- function(x, breaks="23", labels=paste(1:length(x)), groups=
 	rv <- list(x=x, groups=if(ng>1) g else NA, breaks=breaks, labels=labels,
 		x.left=x.left, x.height=x.height, x.mid=x.mid)
 
-	if(plot) bkp(rv, xlim = xlim, ylim = ylim, main = main, xlab = main, ylab=ylab, 
+	if(plot) bkp(rv, xlim = xlim, ylim = ylim, main = main, xlab = xlab, ylab=ylab, 
 		grp.labs=grp.labs,  add=add, ... )
 	
 	return(invisible( structure(rv, class=c("blockplot", "list") ) ))
