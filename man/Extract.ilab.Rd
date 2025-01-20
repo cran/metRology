@@ -52,7 +52,7 @@ consequences for other functions; only the print method is likely to operate suc
 \references{
 None, yet.}
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

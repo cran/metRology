@@ -60,7 +60,7 @@ Maronna R A, Martin R D, Yohai V J (2006) Robust statistics - theory and methods
 Jhn Wiley and Sons, West Sussex, England.
 }
 \author{
-S L R Ellison \email{s.ellison@lgc.co.uk}
+S L R Ellison \email{s.ellison@lgcgroup.com}
 }
 \note{
 Algorithm A is identical to Huber's estimate with variable scale. 

@@ -70,7 +70,7 @@ results - Part 5: Alternative methods for the determination of the precision
 of a standard measurement method
 }
 \author{
-S L R Ellison \email{s.ellison@lgc.co.uk}
+S L R Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

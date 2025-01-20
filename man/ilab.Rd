@@ -122,7 +122,7 @@ An object of class \sQuote{ilab} consisting of:
 \references{
 None, yet.}
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

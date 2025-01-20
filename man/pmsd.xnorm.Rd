@@ -30,7 +30,7 @@ A vector of probabilities}
 \references{
 Mood, Graybill and Boes (1974) pp252ff
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}}
+\author{S Ellison \email{s.ellison@lgcgroup.com}}
 
 \seealso{
 \code{\link{pmsd}}, \code{\link{msd}}

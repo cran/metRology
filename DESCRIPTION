@@ -1,9 +1,15 @@
 Package: metRology
-Version: 0.9-28-1
-Date: 2018-09-04
+Version: 0.9-29-2
+Date: 2025-01-20
 Title: Support for Metrological Applications
-Author: Stephen L R Ellison <s.ellison@lgc.co.uk>.
-Maintainer: Stephen L R Ellison <s.ellison@lgcgroup.com>
+Authors@R: c(person(given = c("Stephen", "L", "R"),
+                      family = "Ellison.",
+                      role = "aut",
+                      email = "s.ellison@lgcgroup.com"),
+               person(given = c("Stephen", "L", "R"),
+                      family = "Ellison",
+                      role = "cre",
+                      email = "s.ellison@lgcgroup.com"))
 Depends: R (>= 2.14.0), base, stats
 Imports: graphics, MASS, numDeriv, robustbase
 Description: Provides classes and calculation and plotting functions 
@@ -11,10 +17,10 @@ Description: Provides classes and calculation and plotting functions
  and inter-laboratory metrology comparison studies. 
 License: GPL (>= 2)
 URL: https://r-forge.r-project.org/projects/metrology/
-Repository: CRAN
-Repository/R-Forge/Project: metrology
-Repository/R-Forge/Revision: 128
-Repository/R-Forge/DateTimeStamp: 2018-09-04 21:35:58
-Date/Publication: 2018-09-10 08:30:03 UTC
 NeedsCompilation: no
-Packaged: 2018-09-04 21:50:17 UTC; rforge
+Packaged: 2025-01-20 02:01:54 UTC; slre
+Author: Stephen L R Ellison. [aut],
+  Stephen L R Ellison [cre]
+Maintainer: Stephen L R Ellison <s.ellison@lgcgroup.com>
+Repository: CRAN
+Date/Publication: 2025-01-20 11:20:02 UTC

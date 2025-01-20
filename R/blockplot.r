@@ -8,6 +8,8 @@
 
 # v5 separates creation and plotting
 
+# v6 adds legend-like group label positions
+
 ## Omitted for now: object name does not parse correctly in bxp()
 ##
 ## plot.blockplot <- function(x, ...) {
@@ -269,6 +271,28 @@ bkp <- function(x, labels=x$labels, xlim = NULL, ylim = NULL,
 	} 
 
 	if(label.groups) {
+		#Check for character pos:
+		if (is.character(grp.pos)) { #make sure positions match exactly
+			positions <- c("bottom", "bottomright", "bottomleft", 
+				"left", "top", "topleft", "topright", "right")
+
+			#Have to loop, here, because pmatch returns NA on multiple partial matches
+			np <- vector(length=length(grp.pos))
+			for(i in 1:length(grp.pos)) {
+				np[i] <- pmatch(grp.pos[i], positions, duplicates.ok=FALSE, nomatch=99)
+			}
+			if(any(np > 10)) {
+				warning("Unrecognised or ambiguous grp.ps value(s): using \"left\"")
+				np[ np > 10 ] <- which(positions=="left")
+							#This construct protects against changes in
+							#'positions' definition
+			}
+			grp.pos <- positions[ np ]
+			glab.auto <- TRUE
+		} else { #Not character
+			glab.auto <- FALSE
+		}
+		#recycle over groups
 		grp.pos <- rep(grp.pos, length.out=nlevels(x$groups))
 	}
 	
@@ -394,25 +418,59 @@ bkp <- function(x, labels=x$labels, xlim = NULL, ylim = NULL,
 			if( !grp.empty ){
 				grp.mid.x <- sum( range(x$x.mid[which.x], na.rm = TRUE) )/2
 				grp.mid.y <- 0.5 + sum( range(y, na.rm = TRUE) )/2
-				glab.x <- switch(grp.pos[ig],
-					grp.mid.x,
-					min(x$x.left[which.x]) - blockwidth/2,
-					grp.mid.x,
-					max(x$x.left[which.x]) + blockwidth*1.5			
-				)
-				glab.y <- switch(grp.pos[ig],
-					min(y, na.rm = TRUE), grp.mid.y, max(y, na.rm = TRUE)+1, grp.mid.y)
+				if( !glab.auto ) { #grp.pos numeric
+					glab.x <- switch(grp.pos[ig],
+						grp.mid.x,
+						min(x$x.left[which.x]) - blockwidth/2,
+						grp.mid.x,
+						max(x$x.left[which.x]) + blockwidth*1.5			
+					)
+					glab.y <- switch(grp.pos[ig],
+						min(y, na.rm = TRUE), 
+						grp.mid.y, 
+						max(y, na.rm = TRUE)+1, 
+						grp.mid.y)
+					glab.pos <- grp.pos[ig]
+					
+				} else { #glab.automatic placement as per 'legend'
+					    usr <- par("usr")
+					    grp.mid.y <- offset + grp.at[ig] + 0.5 + 
+					    		sum( range(x$x.height, na.rm = TRUE) )/2
+					    glab.x <- switch(grp.pos[ig], 
+					    		bottomright = , topright = , right = usr[2L],
+					    		bottomleft = , left = , topleft = usr[1L], 
+					    		bottom = , top = (usr[1L] + usr[2L])/2)
+					    glab.y <- switch(grp.pos[ig], 
+					                bottomright = ,
+					                bottom = ,
+					                bottomleft = min(y, na.rm = TRUE),
+					                topleft = ,
+					                top = ,
+					                topright = max(y, na.rm = TRUE)+1,
+					                left = ,
+					                right = grp.mid.y)
+					    glab.pos <- switch(grp.pos[ig], 
+					                bottomright = ,
+					                topright = ,
+					                right = 2, #To the left of the location
+					                bottom = 1, #Underneath
+					                bottomleft = ,
+					                topleft = ,
+					                left = 4, #To the right of location
+					                top = 3,  #Above
+					                NULL)
+				}
 				glab.args <- c(list(x=glab.x, y=glab.y, labels=grp.labs[ig]), glab.control,
-					if(is.null(glab.control$pos) && is.null(glab.control$adj)) list(pos=grp.pos[ig]))
+					if(is.null(glab.control$pos) && is.null(glab.control$adj)) list(pos=glab.pos))
 			} else {
-				glab.x <- sum( range(x$x.mid, na.rm = TRUE) )/2
+				glab.x <- if(is.na(glab.auto)) sum( range(x$x.mid, na.rm = TRUE) )/2
+					  else sum(par("usr")[1:2]) / 2 #for consistency with non-missing
 				glab.y <- offset + grp.at[ig] + 0.5 + sum( range(x$x.height, na.rm = TRUE) )/2
 				glab.args <- c(list(x=glab.x, y=glab.y, labels=grp.labs[ig]), glab.control)
 				#and disable pos and adj for this 'missing' label
 				glab.args$pos <- NULL
 				glab.args$adj <- NULL
 			}
-			
 			do.call("text", c(glab.args))
 		}
 

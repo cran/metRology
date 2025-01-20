@@ -65,7 +65,7 @@ A vector of densities, probabilities, quantiles or random deviates.
 }
 
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 

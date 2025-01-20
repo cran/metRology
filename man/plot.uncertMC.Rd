@@ -49,14 +49,14 @@ For uncert objects created with methods other than MC, the plot types are:
      \code{hist.default}}
   \item{\code{which=2}}{A Q-Q plot of the MC replicates in \code{x$MC$y}, 
      with Q-Q line. The plot uses \code{qqnorm.default}. If \code{datax} is not
-     present (in sQuote{\dots}), it is set to \code{TRUE}.}
+     present (in \sQuote{\dots}), it is set to \code{TRUE}.}
   \item{\code{which=3}}{A density plot of the MC replicates in \code{x$MC$y}.
      The plot calls \code{density.default} to calculate the density and 
      \code{plot.density} to produce the plot.}
-  \item{\code{which=4}}{A bar plot of eqn{cor(x_i,y)} if \code{x$y}
+  \item{\code{which=4}}{A bar plot of \eqn{cor(x_i,y)} if \code{x$y}
      is present. Any correlation method supported by \code{stats::cor} may 
      be included in \sQuote{\dots} (e.g as \code{method="pearson"}.}
-  \item{\code{which=5}}{A bar plot of eqn{cov(x_i,y)} if \code{x$y}
+  \item{\code{which=5}}{A bar plot of \eqn{cov(x_i,y)} if \code{x$y}
      is present. Any correlation method supported by \code{stats::cov} may 
      be included in \sQuote{\dots} (e.g as \code{method="pearson"}.}
 }
@@ -83,7 +83,7 @@ unknown, the plot is skipped with a warning.
 None.
 }
 \author{
-S. L. R. Ellison, \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison, \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

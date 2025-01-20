@@ -1,3 +1,6 @@
+# 2024-12-09: Replaced class/string comparisons with inherits()
+#
+
 drop1.uncert<-function(object, scope, simplify=TRUE, 
                 which=c("% Change", "var", "u", "var.change", "u.change"), ...) {
         
@@ -15,11 +18,11 @@ drop1.uncert<-function(object, scope, simplify=TRUE,
         if( missing(scope) ) {
                 snames <- x.names
         } else {
-                if(class(scope)=="formula") {
+                if(inherits(scope, "formula")) {
                         snames<-attr(terms(scope, data=object$cov),"term.labels")
-                } else if(class(scope)=="expression") {
+                } else if(inherits(scope, "expression")) {
                         snames<-all.vars(scope)
-                } else if(class(scope)=="character") {
+                } else if(inherits(scope, "character")) {
                         snames <- scope
                 }
         
@@ -75,11 +78,11 @@ drop1.uncertMC<-function(object, scope, simplify=TRUE,
         if( missing(scope) ) {
                 snames <- x.names
         } else {
-                if(class(scope)=="formula") {
+                if(inherits(scope, "formula")) {
                         snames<-attr(terms(scope, data=object$cov),"term.labels")
-                } else if(class(scope)=="expression") {
+                } else if(inherits(scope, "expression")) {
                         snames<-all.vars(scope)
-                } else if(class(scope)=="character") {
+                } else if(inherits(scope, "character")) {
                         snames <- scope
                 }
         
@@ -116,7 +119,7 @@ print.drop1.uncert<-function(x, ..., digits=2) {
                 expr<-attr(x, "expr")
                 cat("Single variable deletions:\n" )
                 cat("Expression: ")
-                if(class(expr)=="formula" ) {
+                if(inherits(expr, "formula") ) {
                         cat(paste(expr, collapse=""))
                 } else if(is.function(expr)) {
                         cat( deparse(expr)[1] )
@@ -145,7 +148,7 @@ plot.drop1.uncert<-function(x, ..., which=c("% Change", "var", "u", "var.change"
 
 		expr<-attr(x, "expr")
 		expr.ch<-
-			if(class(expr)=="formula" ) {
+			if(inherits(expr, "formula") ) {
 				paste(expr, collapse="")
 			} else if(is.function(expr)) {
 				deparse(expr)[1] 

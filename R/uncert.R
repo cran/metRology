@@ -1,6 +1,25 @@
 
+# 2024-12-09: Replaced class/string comparisons with inherits()
+#
+
 uncert<-function(obj, ...){
         UseMethod("uncert")
+}
+
+# Function to check for mismatches in variable and parameter names
+.names.match <- function(expr, x, ...) {
+
+        var.names<-if(inherits(expr, "function") ) 
+                                names(formals(expr)) 
+                        else all.vars(expr)
+
+        if("..." %in% var.names) {
+        	var.names <- var.names[-which(var.names == "...")]
+        }
+        
+        par.names <- names( c(x, ...) )
+        
+        setequal(var.names, par.names)
 }
 
 uncert.default<-function(obj, c, method=c("GUM", "MC"), cor, cov, distrib=NULL, 
@@ -8,7 +27,7 @@ uncert.default<-function(obj, c, method=c("GUM", "MC"), cor, cov, distrib=NULL,
 
    ### Standard check for u, cov and cor.
 
-        if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
+	if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
 	
 	if(!missing(u) && !missing(cov)) {
 		warning("Only one of u and cov should be specified: using cov", call.=TRUE)
@@ -75,6 +94,12 @@ uncert.default<-function(obj, c, method=c("GUM", "MC"), cor, cov, distrib=NULL,
 
 uncert.function<-function(obj, x, u, method=c("NUM", "kragten", "k2", "MC"), cor, cov, 
                         distrib=NULL, distrib.pars=NULL, B=200, delta=0.01, keep.x=TRUE, ...) {
+
+        # Check for name mismatches
+        if( !.names.match(obj, x, ...) ) {
+                stop("Variables in expr do not match arguments in x and '...'", call.=TRUE )
+        }
+
 
     ### Standard check for u, cov and cor.
 
@@ -209,12 +234,12 @@ uncert.expression<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "
         } 
      ### End standard check for u, cov and cor.
         
-        obj.names<-all.vars(obj)
-        
-        if( any( !(obj.names %in% names(c(x,...))) ) | 
-                any( !(names(c(x,...)) %in% obj.names) )) {
+        # Check for name mismatches
+        if( !.names.match(obj, x, ...) ) {
                 stop("Variables in obj do not match arguments in x and '...'", call.=TRUE )
         }
+
+        obj.names<-all.vars(obj)
 
         method <- match.arg(method, several.ok=TRUE)[1]
         if(method %in% c("NUM", "kragten", "k2") ) {
@@ -296,12 +321,12 @@ uncert.formula<-function(obj, x, u, method=c("GUM", "NUM", "kragten", "k2", "MC"
         } 
      ### End standard check for u, cov and cor.
         
-        obj.names<-all.vars(obj)
-
-        if( any( !(obj.names %in% names(c(x,...))) ) | 
-                any( !(names(c(x,...)) %in% obj.names) )) {
-                stop("Arguments in obj do not match arguments in x and '...'", call.=TRUE )
+        # Check for name mismatches
+        if( !.names.match(obj, x, ...) ) {
+                stop("Variables in expr do not match arguments in x and '...'", call.=TRUE )
         }
+
+        obj.names<-all.vars(obj)
 
         method <- match.arg(method, several.ok=TRUE)[1]
 

@@ -68,7 +68,7 @@ See \code{\link{uncert-class}} and \code{\link{uncertMC-class}} for details.
 None, yet.
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

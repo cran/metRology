@@ -55,7 +55,7 @@
 \seealso{
   \code{\link{p.adjust}}, \code{\link[graphics]{image}}.
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}}
+\author{S Ellison \email{s.ellison@lgcgroup.com}}
 \examples{
 
   data(Pb)

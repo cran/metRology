@@ -62,7 +62,7 @@ The print method is called for its side effect; no value is returned.
 None, yet
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

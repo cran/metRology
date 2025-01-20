@@ -106,7 +106,7 @@ An object of class \code{uncertMC}. See \code{\link{uncertMC-class}} for details
 }
 \references{
 JCGM 100 (2008) \emph{Evaluation of measurement data - Guide to the expression
-of uncertainty in measurement}. \url{http://www.bipm.org/utils/common/documents/jcgm/JCGM_100_2008_E.pdf}. 
+of uncertainty in measurement}. \doi{10.59161/JCGM100-2008E}. 
 (JCGM 100:2008 is a public domain copy of ISO/IEC \emph{Guide to the expression
 of uncertainty in measurement} (1995) ). 
 
@@ -119,7 +119,7 @@ calculation of combined standard uncertainties, Accred. Qual. Assur. \bold{10}, 
 
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 

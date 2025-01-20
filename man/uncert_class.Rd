@@ -80,7 +80,7 @@ An object of class "uncert" contains:
 None.
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 \seealso{
   \code{\link{uncert}}, especially for calculation methods; 

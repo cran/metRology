@@ -143,8 +143,8 @@ contour level.) This seems to give reasonably good results for \eqn{n \ge 3 }
 but is anticonservative (particularly to high \eqn{s}) for \eqn{n = 2 }. 
  
 Contours are by default labelled. Label locations can be specified using \code{pos.clab}. 
-Options are code{"top"}, code{"topright"}, code{"right"}, code{"bottomright"}, 
-code{"bottom"}, code{"bottomleft"}, code{"left"} and code{"topleft"}. A vector can be 
+Options are \code{"top"}, \code{"topright"}, \code{"right"}, \code{"bottomright"}, 
+\code{"bottom"}, \code{"bottomleft"}, \code{"left"} and \code{"topleft"}. A vector can be 
 specified to give labels at more than one such location. 
 Contour labels are usually placed approximately at the location(s) indicated and adjusted outward 
 appropriately. For the special case of \code{method="density"} and  \code{degfree=1} (or where group 
@@ -179,7 +179,7 @@ Likelihood,Clarendon Press, Oxford, pp258-9
 W Kruskal, American Mathematical Monthly 53, 435-438, (1946)
 
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}
+\author{S Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

@@ -8,6 +8,8 @@
 #
 # 2014-03-04: Amended reference to plot.density to plot
 #
+# 2024-12-09: Replaced class/string comparisons with inherits()
+#
 print.uncertMC<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE, minimise=FALSE){
         maxwidth<-12L
         cat("\nUncertainty evaluation\n\n")
@@ -15,7 +17,7 @@ print.uncertMC<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE, minimi
         cat("Call:\n  ",deparse(x$call), sep="")
         cat("\n\n")
         cat("Expression: ")
-        if(class(x$expr)=="formula" ) {
+        if(inherits(x$expr, "formula") ) {
                 cat(paste(x$expr, collapse=""))
         } else if(is.function(x$expr)) {
                 cat( deparse(x$expr)[1] )
@@ -45,8 +47,10 @@ print.uncertMC<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE, minimi
                 
         }
         print.data.frame(dp,digits=digits, right=right, ...)
-        if(!is.null(x$additional) ) print(as.data.frame(x$additional), ...)
-
+        if(!is.null(x$additional) ) {
+                cat("\nAdditional parameters:\n")
+                print(as.data.frame(x$additional), ...)
+        }
         cat("\n   y: ", format(x$y))
         cat("\nu(y): ", format(x$u.y), "\n")
 
@@ -67,16 +71,16 @@ print.uncertMC<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE, minimi
         }
         
         cat(sprintf("\nMonte Carlo evaluation using %d replicates:\n", x$B))
-        cat("\n   y:\n")
+        cat("\n   y*:\n")
         if(simplify) {
-                print(summary(x$MC$y))
-        } else {
+                 print(summary(x$MC$y))
+       } else {
                 print(x$MC$y)
-                if(!is.null(x$MC$x) ) {
-                        cat("\n   x:\n")
-                        print(summary(x$MC$x))
-                }
         }
+	if(!is.null(x$MC$x) ) { #Always printed as summary if present
+		cat("\n   x*:\n")
+		print(summary(x$MC$x))
+	}
         invisible(x)
 }
 

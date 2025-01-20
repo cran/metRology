@@ -59,7 +59,7 @@ Toman, B. and Possolo, A. (2009) Laboratory effects models for interlaboratory
 comparisons. Accred. Qual. Assur. \bold{14}, 553-563 (2009)
 }
 \author{
-S. Ellison \email{s.ellison@lgc.co.uk}
+S. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \section{Warning }{

@@ -49,7 +49,7 @@ shared.u.i = var.name, cl = 0.95, cov.factor = "Student's t", sig.digits.U = 2, 
 Whenever possible, sensitivity coefficients are obtained analytically using the gradient attribute of the 
 \code{\link{deriv}} function. In situations where some part of the measurement function is not found in
 derivative table, sensitivity coefficients are obtained by numeric partial differentiation using the
-\code{\link{grad}} function from the package numDeriv.
+\code{\link[numDeriv]{grad}} function from the package numDeriv.
 }
 
 \value{

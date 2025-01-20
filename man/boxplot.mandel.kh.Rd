@@ -117,7 +117,7 @@ Vertical separators are drawn at midpoints of \code{at}. If
 \code{boxplot}, invisibly.
 }
 \author{
-S Ellison \email{s.ellison@lgc.co.uk}
+S Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

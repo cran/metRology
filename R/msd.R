@@ -49,10 +49,10 @@ msd<-function(x, s=mad , ...) {
         
         structure( 
         	sapply(N, function(n) median( abs(x[n] - x[-n])/sqrt(ss[n]+ss[-n]) ) ),
-        	names=names(x),
+        	names=if(is.null(names(x))) paste(1:length(x)) else names(x),
         	x=x,
         	s=sqrt(ss),
-        	class=c("MSD", "numeric")
+        	class=c("MSD", "mtr.paircomp", "numeric")
         )
 }
 

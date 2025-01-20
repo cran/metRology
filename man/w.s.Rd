@@ -44,7 +44,7 @@ The calculated effective degrees of freedom associated with \code{uc}.
 }
 \references{
 JCGM 100 (2008) \emph{Evaluation of measurement data - Guide to the expression
-of uncertainty in measurement}. \url{http://www.bipm.org/utils/common/documents/jcgm/JCGM_100_2008_E.pdf}. 
+of uncertainty in measurement}. \doi{10.59161/JCGM100-2008E}. 
 (JCGM 100:2008 is a public domain copy of ISO/IEC \emph{Guide to the expression
 of uncertainty in measurement} (1995) ). 
 
@@ -56,7 +56,7 @@ population variances are involved., Biometrika \bold{34} 28-35
 
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

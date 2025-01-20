@@ -51,7 +51,7 @@ Vector values of x, p, q and g are permitted, in which case the functions return
 None.
 }
 \author{
-S. L. R. Ellison, \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison, \email{s.ellison@lgcgroup.com}
 }
 
 \section{Warning }{

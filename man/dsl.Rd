@@ -79,7 +79,7 @@ This implementation permits input in the form of:
 Jackson et al. (2010) J Stat Plan Inf 140, 961-970 
 }
 \author{
-S L R Ellison \email{s.ellison@lgc.co.uk}
+S L R Ellison \email{s.ellison@lgcgroup.com}
 }
 \seealso{
 \code{\link{loc.est-class}}

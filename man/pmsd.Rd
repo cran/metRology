@@ -81,7 +81,7 @@
 	A vector of length \code{length(p)} or \code{length(q)} (or, if longer, \code{length(n)}) of 
 	cumulative probabilities, densities or quantiles respectively.
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}}
+\author{S Ellison \email{s.ellison@lgcgroup.com}}
 \seealso{
   \code{\link{msd}} for calculation of MSD values, and \code{\link{bootMSD}} for 
   a parametric bootstrap (MCS) method of obtaining \emph{p}-values and quantiles

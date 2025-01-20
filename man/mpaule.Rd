@@ -66,7 +66,7 @@ Paule, R. C.  and Mandel, J. (1982), J Res Nat Bur Stand, \bold{87}, (5) 377-385
 }
 
 \author{
-S. Cowen \email{simon.cowen@lgc.co.uk} with amendments by S. L. R. Ellison.
+S. Cowen \email{simon.cowen@lgcgroup.com} with amendments by S. L. R. Ellison.
 }
 \examples{
 ## the second example in the paper cited above

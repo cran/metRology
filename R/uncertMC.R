@@ -6,6 +6,10 @@
 #
 # 2014-03-04  Removed "require(MASS)" (deprecated) - SLRE
 #
+# 2024-08-07  Amended name check to exclude "..." in function arg names
+#
+# 2024-12-09: Replaced class/string comparisons with inherits()
+#
 uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars, B=200, keep.x=TRUE,  vectorized=TRUE, ...) {
 
         if(method != "MC") {
@@ -18,26 +22,16 @@ uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars,
         
         L <- length(x) 
         
-        names.match <- function( names1, names2) {
-                all( (names1 %in% names2) ) && all( (names2 %in% names1) )      
-        }
-
         #Make sure everything is a list, 'cos we'll need that later
         x <- as.list(x)
         if(is.null(names(x))) names(x)<-paste("X", 1:L )
 
         
         #Check for mismatches in variable and parameter names
-        var.names<-if(class(expr) == "function" ) 
-                                names(formals(expr)) 
-                        else all.vars(expr)
-
-        par.names <- names( c(x, ...) )
-        
-        if( !names.match(var.names, par.names) ) {
+        if( !.names.match(expr, x, ...) ) {
                 stop("Variables in expr do not match arguments in x and '...'", call.=TRUE )
         }
-        
+
         if(missing(u) && missing(cov)) stop("Either u or cov must be present", call.=TRUE)
 
         if(!missing(u) && !missing(cov)) warning("Only one of u and cov should be specified: using cov")
@@ -46,7 +40,7 @@ uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars,
                 if(length(u) != L) stop("Lengths of x and u do not match", call.=TRUE)
                 u<-as.list(u)
                 if(is.null(names(u))) names(u)<-names(x)
-                   else if( !names.match( names(x), names(u) ) ) {
+                   else if( !setequal( names(x), names(u) ) ) {
                         stop("Names in x and u do not match", call.=TRUE )
                 }
         } else {
@@ -146,7 +140,7 @@ uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars,
         
         if(use.cov) {
                 #Pull out correlated variables
-                cor.vars<-which(rowSums(cor)> (1+.Machine$double.eps*nrow(cor)))
+                cor.vars<-which(rowSums(abs(cor))> (1+.Machine$double.eps*nrow(cor)))
                 cor.vars.names<-names(x)[cor.vars]
                 #Check distribs of these are Normal
                 if( any(sapply(distrib, function(d) d!="norm"))) 
@@ -182,7 +176,7 @@ uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars,
                 } else {
                         y<-eval(expr, c(dfx, constants))
                 }
-        } else if( class(expr)=="formula" ) {
+        } else if( inherits(expr, "formula") ) {
             if ((le <- length(expr)) > 1) {
                 y0<-eval(expr[[2]], c(x, constants))
                 if(!vectorized) {
@@ -238,7 +232,7 @@ uncertMC<-function(expr, x, u, method="MC", df, cor, cov, distrib, distrib.pars,
         constants<-list(...)
         if( is.expression(expr) ) {     
                 y<-apply(x, 1, function(Row,const) eval(expr, c(as.list(Row), const)), const=constants) 
-        } else if( class(expr)=="formula" ) {
+        } else if( inherits(expr, "formula") ) {
                 if ((le <- length(expr)) > 1) {
                 y<-apply(x, 1, function(Row,const) eval(expr[[2]], c(as.list(Row), const)), const=constants) 
                 } else stop("Invalid formula in uncertMC")

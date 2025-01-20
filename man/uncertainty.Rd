@@ -34,7 +34,7 @@ Correlation is supported via either a correlation or covariance matrix.}
 }
 \arguments{
   \item{obj}{An R object used for method dispatch; see below. Methods currently exist for 
-     numeric vector, expression, function, or formula}
+     numeric vector, expression, function, or formula objects.}
   \item{u}{For the default method, a numeric vector of standard uncertainties. For 
      the formula or expression methods, a named list of standard uncertainties.Note that 
      for the default method, \code{u} is set to the value of \code{obj}, allowing 
@@ -67,7 +67,7 @@ Correlation is supported via either a correlation or covariance matrix.}
   	Silently ignored for other methods.}
   \item{B}{Number of Monte Carlo replicates.}
   \item{delta}{Step size for numerical differentiation.}
-  \item{keep.x}{For \code{method="MC"}, if \code{keepx=TRUE}, the simulated replicates of 
+  \item{keep.x}{For \code{method="MC"}, if \code{keep.x=TRUE}, the simulated replicates of 
      \code{x} are included in the return object.}
   \item{\dots}{Additional parameters to be passed to a function (for the function method)
    or used in an expression (for expression or formula method).}
@@ -100,15 +100,16 @@ applied to \code{expr} and \code{formula}.
 
 Numerical derivatives are computed in different ways depending on the method specified: 
 
-- For \code{method="NUM"}, the derivatives are calculated as 
- \eqn{(f(x+delta*u)-f(x-delta*u))/(2*delta*u)}.
+\itemize{
+  \item For \code{method="NUM"}, the derivatives are calculated as 
+        \eqn{(f(x+u \delta)-f(x-u \delta))/(2 u \delta)}{(f(x+delta*u)-f(x-delta*u))/(2*delta*u)}.
 
-- For \code{method="kragten"}, derivatives are calculated as 
- \eqn{(f(x+u*sign(delta))-f(x))/u}.
+  \item For \code{method="kragten"}, derivatives are calculated as 
+        \eqn{(f(x+{\mathrm sign}(\delta)u)-f(x))/u}{(f(x+u*sign(delta))-f(x))/u}.
 
-- For \code{method="k2"}, derivatives are calculated as 
- \eqn{(f(x+u)-f(x-u))/(2*u)}.
-
+  \item For \code{method="k2"}, derivatives are calculated as 
+        \eqn{(f(x+u)-f(x-u))/(2 u)}{(f(x+u)-f(x-u))/(2*u)}.
+}
 \code{"NUM"} is likely to give a close approximation to analytical differentiation provided that 
 \code{delta} is appreciably less than 1 but not so small as to give step sizes near machine 
 precision. \code{"k2"} is equivalent to \code{"NUM"} with \code{delta=1.0}. Both will give zero coefficients
@@ -149,7 +150,7 @@ See \code{\link{uncert-class}} and \code{\link{uncertMC-class}} for details.
 }
 \references{
 JCGM 100 (2008) \emph{Evaluation of measurement data - Guide to the expression
-of uncertainty in measurement}. \url{http://www.bipm.org/utils/common/documents/jcgm/JCGM_100_2008_E.pdf}. 
+of uncertainty in measurement}. \doi{10.59161/JCGM100-2008E}. 
 (JCGM 100:2008 is a public domain copy of ISO/IEC \emph{Guide to the expression
 of uncertainty in measurement} (1995) ). 
 
@@ -162,7 +163,7 @@ calculation of combined standard uncertainties, Accred. Qual. Assur. \bold{10}, 
 
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 \seealso{
   \code{\link{uncert-class}},  \code{\link[stats]{deriv}}

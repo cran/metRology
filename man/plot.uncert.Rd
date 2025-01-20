@@ -44,7 +44,7 @@ For uncert objects created with methods other than MC, the plot types are:
     is greater than \code{2*.Machine$double.eps}. Note that off-diagonal contributions
     may be negative.}
   \item{\code{which=2}}{As for \code{which=1} except that the square root of the 
-    absolute value is plotted. For the 'diagonal' terms, these are just eqn{u_i(y)} 
+    absolute value is plotted. For the 'diagonal' terms, these are just \eqn{u_i(y)} 
     in the nomenclature used by the GUM.}
   \item{\code{which=3}}{A barplot of \eqn{u_i(y)^2}, without the correlation terms.}
   \item{\code{which=4}}{A barplot of the sum of all (co)variance contributions 
@@ -83,7 +83,7 @@ Objects created with the MC method are passed to \code{\link{plot.uncertMC}}.
 None.
 }
 \author{
-S. L. R. Ellison, \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison, \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

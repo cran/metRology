@@ -3,7 +3,7 @@ contribs<-function(object, scope, as.sd=FALSE, keep.sign=TRUE, simplify=TRUE, ex
 	if( missing(scope) ) {
 		snames <- scope <- b.names
 	} else {
-		if(class(scope)=="formula") {
+		if(inherits(scope, "formula")) {
 			if("." %in% all.vars(scope) && expand.dot) {
 				c.scope<-as.character(scope)
 				c.scope[2] <- gsub("\\^ ?2", "", c.scope[2])
@@ -12,9 +12,9 @@ contribs<-function(object, scope, as.sd=FALSE, keep.sign=TRUE, simplify=TRUE, ex
 			}
 			snames<-fnames<-attr(terms(scope, data=object$cov),"term.labels")
 			fnames <- unique(fnames, c(sub("(.*):(.*)","\\2:\\1",fnames)))
-		} else if(class(scope)=="expression") {
+		} else if(inherits(scope, "expression")) {
 			snames<-all.vars(scope)
-		} else if(class(scope)=="character") {
+		} else if(inherits(scope, "character")) {
 			snames <- scope
 		}
 		snames <- snames[ snames %in% b.names ]
@@ -33,7 +33,7 @@ contribs<-function(object, scope, as.sd=FALSE, keep.sign=TRUE, simplify=TRUE, ex
 		x<-c(diag(contrib), 2*contrib[indices])
 		names(x)<-c(x.names, paste(x.names[indices[,1]], 
 				x.names[indices[,2]], sep=":"))
-		if(class(scope)=="formula") x<-x[names(x) %in% fnames]
+		if(inherits(scope, "formula")) x<-x[names(x) %in% fnames]
 	} else {
 		x<-contrib
 	}

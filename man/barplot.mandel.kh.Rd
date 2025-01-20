@@ -99,7 +99,7 @@ Basic method for the determination of repeatability and reproducibility of a
 standard measurement method. ISO, Geneva (1994).
 }
 \author{
-S Ellison \email{s.ellison@lgc.co.uk}
+S Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

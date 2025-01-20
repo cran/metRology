@@ -11,7 +11,7 @@ A data frame containing reported results for lead (in mg/kg) from
 CCQM Key Comparison CCQM-K30.
 }
 \usage{
-	Pb
+	data(Pb)
 }
 \format{
 A data frame containing 11 reported results with uncertainty data:

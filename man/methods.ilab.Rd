@@ -41,7 +41,7 @@ The print and plot methods are called for their side effects.
 \references{
 None, yet.}
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

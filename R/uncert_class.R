@@ -122,7 +122,7 @@ print.uncert<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE){
         cat("Call:\n  ",deparse(x$call), sep="")
         cat("\n\n")
         cat("Expression: ")
-        if(class(x$expr)=="formula" ) {
+        if(inherits(x$expr, "formula")) {
                 cat(paste(x$expr, collapse=""))
         } else if(is.function(x$expr)) {
                 cat( deparse(x$expr)[1] )
@@ -153,7 +153,7 @@ print.uncert<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE){
         }
         print.data.frame(dp,digits=digits, right=right, ...)
         if(!is.null(x$additional) ) {
-                cat("Additional parameters:\n")
+                cat("\nAdditional parameters:\n")
                 print(as.data.frame(x$additional), ...)
         }
         cat("\n   y: ", format(x$y))
@@ -177,16 +177,16 @@ print.uncert<-function(x, digits=NULL, right=FALSE, ..., simplify=TRUE){
         }
         if(!is.null(x$MC) ) {
                 cat(sprintf("\nMonte Carlo evaluation using %d replicates:\n", x$B))
-                cat("\n   y:\n")
+                cat("\n   y*:\n")
                 if(simplify) {
                         print(summary(x$MC$y))
                 } else {
                         print(x$MC$y)
-                        if(!is.null(x$MC$x) ) {
-                                cat("\nMC x:\n")
-                                print(x$MC$x)
-                        }
                 }
+		if(!is.null(x$MC$x) ) { #Always printed as summary if present
+			cat("\nMC x*:\n")
+			print(x$MC$x)
+		}
         }
         invisible(x)
 }

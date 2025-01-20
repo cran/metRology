@@ -52,7 +52,7 @@ the corresponding distribution function for that is then \code{t.scaled} with
 }
 
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

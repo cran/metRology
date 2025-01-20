@@ -116,7 +116,7 @@ This function is called for its side effect, which is the production of a plot.
 Duewer, D, Probably in Anal. Chem. in about 1990
 %%  [### Find ref - SLRE ###] 
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}
+\author{S Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

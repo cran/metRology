@@ -64,7 +64,7 @@ A square symmetric correlation or covariance matrix.
 None.
 }
 \author{
-S. L. R. Ellison \email{s.ellison@lgc.co.uk}
+S. L. R. Ellison \email{s.ellison@lgcgroup.com}
 }
 
 \seealso{

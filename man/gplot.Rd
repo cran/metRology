@@ -81,7 +81,7 @@ Accuracy (trueness and precision) of measurement methods and results -- Part 2:
 Basic method for the determination of repeatability and reproducibility of a 
 standard measurement method. ISO, Geneva (1994).
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}
+\author{S Ellison \email{s.ellison@lgcgroup.com}
 }
 \seealso{
 \code{\link{plot.mandel.kh}}

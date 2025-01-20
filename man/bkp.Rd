@@ -93,8 +93,8 @@ It is normally called from within \code{blockplot} but can be invoked directly.
   \item{grp.labs}{ Logical, determining whether group labels are plotted, or 
   	a vector of labels. See \sQuote{Details}.
   }
-  \item{grp.pos}{Specification for the position of group labels. Follows \code{pos} in 
-  	\code{\link{text}}. See \sQuote{Details}.  
+  \item{grp.pos}{Integer or character specification for the position of group labels. 
+                 See \sQuote{Details}.  
   }
   \item{glab.control}{List of arguments to be passed to \code{\link{text}} 
   	when drawing group labels.
@@ -243,21 +243,40 @@ It is normally called from within \code{blockplot} but can be invoked directly.
 		}
 		
 		\code{grp.pos} specifies the general positioning of group labels 
-		relative to each subplot. \code{grp.pos} follows \code{pos} in \code{\link{text}}:
+		relative to each subplot. \code{grp.pos} can be a numeric or character specification.
+		
+		If \code{grp.pos} is numeric, label position follows \code{pos} in \code{\link{text}}:
 		Values of \code{1}, \code{2}, \code{3} and \code{4}, respectively 
-		indicate positions below, to the left of, above and to the right of the plot.
-          		
-          	The detailed positioning of group labels is automatic; the four positions 
-          	specified by \code{grp.pos} correspond approximately to the midpoints of the 
-          	corresponding edge of each plot, where the \sQuote{edges} are the baseline, 
-          	leftmost block, topmost block and rightmost block. Labels are placed a short 
-          	distance outward from these edges. Labels are justified according to position;
-          	\code{grp.pos} is re-used as the default \code{pos} argument to \code{\link{text}}.
+		indicate positions below, to the left of, above and to the right of the 
+		plotted data for the group. The four positions correspond to the 
+		midpoints of the corresponding edge of each subplot, where the \sQuote{edges} 
+		are the baseline, leftmost block, topmost block and rightmost block. Labels 
+		are placed a short distance outward from the midpoint of these edges. Labels 
+		are justified according to position; by default \code{grp.pos} is used as the 
+		\code{pos} argument to \code{\link{text}}.
+          	
+          	\code{grp.pos} can also be one of \code{"bottom"}, \code{"bottomleft"}, 
+          	\code{"left"}, \code{"topleft"}, \code{"top"}, \code{"topright"},  
+          	\code{"right"} or \code{"bottomright"}. These specify positions around
+          	the edges of the current subplot region, that is, the rectangle defined by 
+          	the top and bottom of the current group plot and the left and right eges 
+          	of the complete figure region. The label justification is set according 
+          	to the edge; all the left and right placements use \code{pos=4} and 
+          	\code{pos=2}, while \code{"bottom"} and \code{"top"} use \code{pos=1} and 
+          	\code{pos=3}. (Note that this means that the vertical positions for labels 
+          	differ slightly between \code{"top"} and \code{"topleft"} etc.) 
+          	
+          	The principal difference between the numeric and character specifications is 
+          	therefore that the numeric codes place the labels close to the 
+          	plotted data, while the character specifications place labels consistently 
+          	relative to the sides of the figure region. 
           	
           	Further control of group label position is available via \code{grp.control}, 
           	which is a list (empty by default) of arguments passed to \code{\link{text}}.
           	Ths can include arguments such as \code{pos} and \code{adj}, as well as 
-          	appearance elements such as \code{col}, \code{cex} etc.
+          	appearance elements such as \code{col}, \code{cex} etc. If present in 
+          	\code{grp.control}, \code{pos} and \code{adj}override the default label 
+          	justification.
 	}
      }   
 
@@ -315,8 +334,15 @@ bkp(bg, square=TRUE, fill=ifelse(1:48 \%in\% c(15, 23, 24), "gold", "white") )
 # Group labelling
 bkp(bg, square=TRUE, grp.labs=paste("Level", 1:3), grp.pos=2)
 
+#Alternative (character) label positioning 
+bkp(bg, square=TRUE, grp.labs=paste("Level", 1:3), grp.pos="left")
+                            #Note the difference from grp.pos=2
+
+#Alternating label locations:
+bkp(bg, square=TRUE, grp.labs=paste("Level", 1:3), 
+                     grp.pos=c("left", "right"))
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
 \keyword{ hplot }

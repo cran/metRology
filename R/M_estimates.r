@@ -4,12 +4,14 @@
 # 2014-03-04: Removed 'require(MASS)' (not needed when listing in 'depends')
 #
 
+# 2020-06-15: Added ... to rlm calls
+
 MM.estimate<-function(x, ...) {
         UseMethod("MM.estimate")
 }
 
 MM.estimate.default<-function(x, u, c=4.685, ...) {
-        rl<-rlm(x~1, weights=1/u^2, c=c, method="MM")
+        rl<-rlm(x~1, weights=1/u^2, c=c, method="MM", ...)
         srl<-summary(rl)
         rv<-.construct.loc.est(x=coef(srl)[1], u=coef(srl)[2], xi=x, ui=u, u.eff=u*rl$s, 
                 w=rl$w, method="MM", method.details=rl)
@@ -22,7 +24,7 @@ huber.estimate<-function(x, ...) {
 }
 
 huber.estimate.default<-function(x, u, k= 1.345, ...) {
-        rl<-rlm(x~1, weights=1/u^2, k=k, method="M")
+        rl<-rlm(x~1, weights=1/u^2, k=k, method="M", ...)
         srl<-summary(rl)
         rv<-.construct.loc.est(x=coef(srl)[1], u=coef(srl)[2], xi=x, ui=u, u.eff=u*rl$s, 
                 w=rl$w, method="Huber", method.details=rl)

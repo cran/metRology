@@ -243,7 +243,8 @@ rbind.ilab<-function(..., deparse.level = 1) {
                         if(!isTRUE(all.equal(sort(names(rv)), sort(names(ilab.list[[i]])) ))) {
                                 stop(sprintf("Names in %s do not match previous names.", names(ilab.list)[i]), call.=TRUE)
                         } else {
-                                print(paste("Binding ", i, "\n"))
+                                #Debug output amended to cat/sprintf and commented out - SLRE 2018-09-03 
+                                #cat(sprintf("Binding %d ilab objects\n", i))
                                 rv$data<-rbind(rv$data, ilab.list[[i]]$data, deparse.level=deparse.level)
                                 if(is.null(ilab.list[[i]]$distrib)) ilab.list[[i]]$distrib<-rep(NA, nrow(ilab.list[[i]]$data))
                                 if(is.null(ilab.list[[i]]$distrib.pars)) ilab.list[[i]]$distrib.pars<-as.list(rep(NA, nrow(ilab.list[[i]]$data)))

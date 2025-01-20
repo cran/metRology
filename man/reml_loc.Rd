@@ -91,7 +91,7 @@ This implementation permits input in the form of:
 None, but see documentation for the metafor package for a more general implementation of REML.
 }
 \author{
-S L R Ellison \email{s.ellison@lgc.co.uk}
+S L R Ellison \email{s.ellison@lgcgroup.com}
 }
 \seealso{
 \code{\link{loc.est-class}}

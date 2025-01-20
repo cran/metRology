@@ -11,7 +11,6 @@ Calibration of an end gauge for length measurement. Notation is based on the pre
 \emph{Data Modeling for Metrology and Testing in Measurement Science}.
 }
 \usage{
-GUM.H.1
 data(GUM.H.1)
 }
 \format{

@@ -149,7 +149,7 @@ kpoints(x,U=NULL, labels=names(x), U.lo=U, U.hi=U, k=2,
 	\item{at}{ x-axis locations used, in plotting order. }
 	
 }
-\author{S Ellison \email{s.ellison@lgc.co.uk}}
+\author{S Ellison \email{s.ellison@lgcgroup.com}}
 \seealso{
   \code{\link{arrows}}.
 }
